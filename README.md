@@ -4,9 +4,11 @@ Card Processing
 Transactions
 ------------
 
+```
 account := { name, bank, number }
 transaction := { beneficiary, subsidiary, transaction-type }
 transaction-type := cashout [ pos [ ballance | source name ] ] | cashin | wire
+```
 
 Events
 ------
@@ -17,6 +19,7 @@ last-payment
 Components
 ----------
 
+```
 card [ name ] [ currencies ]
 grace-period [ days ]
 limit [ amount ]
@@ -27,10 +30,12 @@ rate [ formula ]
 fee [ transaction | month | annual | formula ]
 bonus [ formula ]
 accounts [ fee number | rate number | delay number ]
+```
 
 Examples
 --------
 
+```
 card PB-UNIVERSAL UAH
 limit 25K
 grace-period 55 days
@@ -57,7 +62,9 @@ fee month 5% of debt limit min 50 max debt
 accounts fee     PB-100001
          rate    PB-100002
          penalty PB-100003
+```
 
+```
 card M-PLA-CB UAH
 limit unknown
 grace-period first 100 days then 60 days
@@ -79,3 +86,4 @@ fee month 12 once on initial-payment
 accounts fee     M-100001
          rate    M-100002
          penalty M-100003
+```
