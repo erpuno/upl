@@ -56,7 +56,7 @@ fee month 5% of debt limit min 50 max debt
     transaction wire target local 0
                      1% of amount or 10 + 4% of credit
                      target local type PB-UNIVERAL 0% of amount or 4% of credit
-                     target local type LTD 0.5% of amount limit max 200 or 4% of credit
+                     target local 0.5% of amount limit max 200 or 4% of credit
                      target _ 1% limit min 3 or 4% of credit
                      target _ type phone 2
 accounts fee     PB-100001
