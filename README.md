@@ -13,8 +13,10 @@ transaction-type := cashout [ pos [ ballance | source name ] ] | cashin | wire
 Events
 ------
 
+```
 initial-payment
 last-payment
+```
 
 Components
 ----------
