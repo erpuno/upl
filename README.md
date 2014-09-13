@@ -1,5 +1,10 @@
-Card Processing
-===============
+Card Processing Language
+========================
+
+Objective. Create small and compact language for generation
+erlang rules and database events for credit cards transaction processing.
+Underlying instrumentation code should be KVS layer
+for storing transaction chains.
 
 Transactions
 ------------
@@ -7,7 +12,23 @@ Transactions
 ```
 account := { name, bank, number }
 transaction := { beneficiary, subsidiary, transaction-type }
-transaction-type := cashout [ pos [ ballance | source name ] ] | cashin | wire
+country-range := country Code [ | country-range ]
+pos-terminal := pos [ ballance | source Name ]
+cash-spec := pos-terminal | country-range | nil | cash-spec
+wire-spec := target Name | type Name | nil | wire-spec
+transaction-type :=   cashout [ cash-spec ]
+                    | cashin [ cash-spec ]
+                    | wire [ wire-spec]
+card := name rules
+grace-period [ days ] | first M days [ then N days ]
+limit [ amount ]
+delay [ days | formula ]
+turn-off [ limit [ days | formula ] ] [ message ]
+cash-back [ beneficiary | type | invoice ]
+rate [ formula ]
+fee [ transaction | month | annual | formula ]
+bonus [ formula ]
+accounts [ fee number | rate number | delay number ]
 ```
 
 Events
@@ -22,16 +43,6 @@ Components
 ----------
 
 ```
-card [ name ] [ currencies ]
-grace-period [ days ]
-limit [ amount ]
-delay [ days | formula ]
-turn-off [ limit [ days | formula ] ] [ message ]
-cash-back [ beneficiary | type | invoice ]
-rate [ formula ]
-fee [ transaction | month | annual | formula ]
-bonus [ formula ]
-accounts [ fee number | rate number | delay number ]
 ```
 
 Examples
@@ -43,7 +54,7 @@ limit 25K
 grace-period 55 days
 deposit annual 10% limit min 100
 rate annual 40.90% of credit
-penalty dayly 50 + 5.8% of debt
+penalty daily 50 + 5.8% of debt
 fee month 5% of debt limit min 50 max debt
     transaction cashin 0
                 cashout pos ballance 1
@@ -70,7 +81,7 @@ accounts fee     PB-100001
 card M-PLA-CB UAH
 limit unknown
 grace-period first 100 days then 60 days
-penalty dayly 100
+penalty daily 100
         month add-rate 5%
 currency convert 1%
 rate month 4.9% of credit
