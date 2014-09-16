@@ -6,31 +6,6 @@ erlang rules and database events for credit cards transaction processing.
 Underlying instrumentation code should be KVS layer
 for storing transaction chains.
 
-Transactions
-------------
-
-```
-account := { name, bank, number }
-transaction := { beneficiary, subsidiary, transaction-type }
-country-range := country Code [ | country-range ]
-pos-terminal := pos [ ballance | source Name ]
-cash-spec := pos-terminal | country-range | nil | cash-spec
-wire-spec := target Name | type Name | nil | wire-spec
-transaction-type :=   cashout [ cash-spec ]
-                    | cashin [ cash-spec ]
-                    | wire [ wire-spec]
-card := name [ currency ] rules
-grace [ days ] | first M days [ then N days ]
-limit [ amount ]
-delay [ days | formula ]
-turn-off [ limit [ days | formula ] ] [ message ]
-cash-back [ beneficiary | type | invoice ]
-rate [ formula ]
-fee [ transaction | month | annual | formula ]
-bonus [ formula ]
-accounts [ fee number | rate number | delay number ]
-```
-
 Events
 ------
 
