@@ -16,7 +16,8 @@ Rules.
 
 {D}+\.{D}+([eE]-?{D}+)?            : {token,{double_,to_float(TokenChars),TokenLine}}.
 {D}+\.{D}+([eE]-?{D}+)?[fF]        : {token,{float_,to_float(TokenChars),TokenLine}}.
-{D}+\.{D}+([eE]-?{D}+)?[%]         : {token,{percent_,to_float(TokenChars),TokenLine}}.
+{D}+\.{D}+%                        : {token,{percent_,to_float(TokenChars)/100,TokenLine}}.
+{D}++%                             : {token,{percent_,to_integer(TokenChars)/100,TokenLine}}.
 
 (card|limit|grace|accounts)        : {token,{list_to_atom(TokenChars),TokenLine}}.
 (rate|penalty|fee|deposit)         : {token,{list_to_atom(TokenChars),TokenLine}}.
@@ -24,8 +25,8 @@ Rules.
 (pos|ballance|country|system)      : {token,{list_to_atom(TokenChars),TokenLine}}.
 (daily|monthly|annual|each)        : {token,{list_to_atom(TokenChars),TokenLine}}.
 (target|local|type|name)           : {token,{list_to_atom(TokenChars),TokenLine}}.
-(amount|dept|credit|limit)         : {token,{list_to_atom(TokenChars),TokenLine}}.
-(and|or|not|xor)                   : {token,{list_to_atom(TokenChars),TokenLine}}.
+(amount|debt|credit|limit)         : {token,{list_to_atom(TokenChars),TokenLine}}.
+(and|or|not|xor|status|of)         : {token,{list_to_atom(TokenChars),TokenLine}}.
 (disabled|enabled|false|true)      : {token,{list_to_atom(TokenChars),TokenLine}}.
 (on|off|min|max|unknown)           : {token,{list_to_atom(TokenChars),TokenLine}}.
 
@@ -54,6 +55,7 @@ skip_prefix([$l|Cs]) -> skip_prefix(Cs);
 skip_prefix([$L|Cs]) -> skip_prefix(Cs);
 skip_prefix([$u|Cs]) -> skip_prefix(Cs);
 skip_prefix([$U|Cs]) -> skip_prefix(Cs);
+skip_prefix([$%|Cs]) -> skip_prefix(Cs);
 skip_prefix(Cs) -> Cs.
 
 unquote3(Doc) -> string:substr(Doc, 4, length(Doc) - 6).

@@ -19,8 +19,8 @@ wire-spec := target Name | type Name | nil | wire-spec
 transaction-type :=   cashout [ cash-spec ]
                     | cashin [ cash-spec ]
                     | wire [ wire-spec]
-card := name rules
-grace-period [ days ] | first M days [ then N days ]
+card := name [ currency ] rules
+grace [ days ] | first M days [ then N days ]
 limit [ amount ]
 delay [ days | formula ]
 turn-off [ limit [ days | formula ] ] [ message ]
@@ -100,3 +100,4 @@ accounts fee     M-100001
          rate    M-100002
          penalty M-100003
 ```
+

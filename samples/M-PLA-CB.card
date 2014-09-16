@@ -1,2 +1,10 @@
-card M_PLA_CB USD
-limit unknown
+
+-- Mykhailivsky Platinum Cash Back
+
+card M_PLA_CB USD limit unknown
+fee transaction
+        wire 50 of debt limit max 10 min 1
+        cashin 50
+        cashout 1
+        wire 50 of credit
+    monthly 10%
