@@ -1,0 +1,3 @@
+
+file ..\*\\.(card)$ CPL\sFile
+include cpl.syntax

@@ -1,0 +1,15 @@
+# Syntax rules for the Card Processing Language
+
+context default
+    keyword whole currency brightred
+    keyword whole fee white
+    keyword whole card white
+    keyword whole limit white
+    keyword whole max white
+    keyword whole min white
+    keyword whole of white
+    keyword whole transaction yellow
+    keyword whole monthly yellow
+    keyword whole wire brightcyan
+    keyword whole cashin brightcyan
+    keyword whole cashout brightcyan
