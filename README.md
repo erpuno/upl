@@ -40,16 +40,39 @@ Components
 ----------
 
 ```
+charge_rule = Fixed + Percent [ of amount (default) | of debt | of credit ]
+payment_direction = charge | withdraw
 ```
 
 Examples
 --------
 
 ```
+card "moneybox"
+deposit duration range monthly 1 -> 20%
+                       monthly 3 -> 22%
+                       monthly 6 -> 22% of amount
+                       annual -> 23% of amount
+        partial widthdraw disabled
+        charge enabled
+        fee 15% account "TAX-001"
+
+card "deposit-plus"
+deposit duration monthly 1 2
+        
+```
+
+
+```
 card PB-UNIVERSAL UAH
 limit 25K
 grace-period 55 days
-deposit annual 10% limit min 100
+deposit duration range monthly 1 -> 20%
+                       monthly 3 -> 22%
+                       monthly 6 -> 22% of amount
+                       annual -> 23% of amount
+        partial 
+        fee 15% name "tax" account "users/maxim/accounts/TAX-001"
 rate annual 40.90% of credit
 penalty daily 50 + 5.8% of debt
 fee month 5% of debt limit min 50 max debt

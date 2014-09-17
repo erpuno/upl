@@ -1,0 +1,29 @@
+
+-- Privat Universal Card
+
+card PB-UNIVERSAL UAH
+limit 25000
+grace 55 days
+deposit annual 10% limit min 100
+rate annual 40.90% of credit
+penalty daily 50 + 5.8% of debt
+credit monthly 5% of debt limit min 50 max debt
+      transaction cashin 0
+                 cashout pos ballance 1
+                        country UA 1%
+                                 _ 2%
+                 cashout amount range      1,100 7
+                                     100.01,200 12
+                                     200.01,300 18
+                                     300.01,400 24
+                                     400,01,500 30
+                                     500,01,_   4% of amount
+        transaction wire target local 0
+                     1% of amount or 10 + 4% of credit
+                     target local type PB-UNIVERAL 0% of amount or 4% of credit
+                     target local 0.5% of amount limit max 200 or 4% of credit
+                     target _ 1% limit min 3 or 4% of credit
+                     target _ type phone 2
+accounts fee     PB-100001
+         rate    PB-100002
+         penalty PB-100003
