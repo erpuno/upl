@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="UPL : Universal Processing Language">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>UPL</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/spawnproc/upl">View on GitHub</a>
+
+          <h1 id="project_title">UPL</h1>
+          <h2 id="project_tagline">Universal Processing Language</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/spawnproc/upl/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/spawnproc/upl/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="universal-processing-language" class="anchor" href="#universal-processing-language"><span class="octicon octicon-link"></span></a>Universal Processing Language</h1>
+
+<p>The objective of this project is to create small and compact
+language for payment transaction processing. Underlying instrumentation
+code should be KVS layer for storing transaction chains but
+naturally should be extended to different backends like Java,
+PL/SQL and other languages currently involved in banking card processing.</p>
+
+<p>Pocessing systems are using manually crafted application
+relays to handle card processing business rules. Being defined by business
+analysts these rules are fallen down to engineering teams informally.
+Approach we provide pushes card processing to solid background in a form
+of domain specific language common for all card plans analytics departments.</p>
+
+<p>Having compact language we can formally build various translators
+for particular customers and existing processing systems. At the same time
+we provide reference back-end Erlang system implementation
+for transactions processing. Also DSL gives us a natural and easy
+verification strategies and compactifications.</p>
+
+<p>This language could be easily extended to other domain aread like
+internet payment processing, shopping mall bonus programs, mobile
+operators tariff plans.</p>
+
+<h2>
+<a name="build" class="anchor" href="#build"><span class="octicon octicon-link"></span></a>Build</h2>
+
+<p>Using MAD in PATH just perform make.</p>
+
+<h2>
+<a name="events" class="anchor" href="#events"><span class="octicon octicon-link"></span></a>Events</h2>
+
+<pre><code>initial-payment
+last-payment
+</code></pre>
+
+<h2>
+<a name="components" class="anchor" href="#components"><span class="octicon octicon-link"></span></a>Components</h2>
+
+<pre><code></code></pre>
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<pre><code>card PB-UNIVERSAL UAH
+limit 25K
+grace-period 55 days
+deposit annual 10% limit min 100
+rate annual 40.90% of credit
+penalty daily 50 + 5.8% of debt
+fee month 5% of debt limit min 50 max debt
+    transaction cashin 0
+                cashout pos ballance 1
+                        country UA 1%
+                                 _ 2%
+                cashout amount range      1,100 7
+                                     100.01,200 12
+                                     200.01,300 18
+                                     300.01,400 24
+                                     400,01,500 30
+                                     500,01,_   4% of amount
+    transaction wire target local 0
+                     1% of amount or 10 + 4% of credit
+                     target local type PB-UNIVERAL 0% of amount or 4% of credit
+                     target local 0.5% of amount limit max 200 or 4% of credit
+                     target _ 1% limit min 3 or 4% of credit
+                     target _ type phone 2
+accounts fee     PB-100001
+         rate    PB-100002
+         penalty PB-100003
+</code></pre>
+
+<pre><code>card M-PLA-CB UAH
+limit unknown
+grace-period first 100 days then 60 days
+penalty daily 100
+        month add-rate 5%
+currency convert 1%
+rate month 4.9% of credit
+fee month 12 once on initial-payment
+    month 3% of debt limit min 50 max debt
+    month 1.2% of debt
+    month 24
+    status disabled 10
+    transaction cashin  0
+                cashout pos ATMOSPHERA 0
+                cashout contry UA 5 + 1.5%
+                                _ 30 + 1%
+                wire target local 0
+                wire 0.5% of amount limit min 5 max 500
+accounts fee     M-100001
+         rate    M-100002
+         penalty M-100003
+</code></pre>
+
+<h2>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<ul>
+<li>Maxim Sokhatsky</li>
+</ul><p>OM A HUM</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">UPL maintained by <a href="https://github.com/spawnproc">spawnproc</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
