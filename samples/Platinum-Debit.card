@@ -1,5 +1,9 @@
 
 -- Platinum Debit/Personal
+--
+-- to try card run 
+--
+--      $ upl samples/Platinum-Debit.card
 
 card PLA_DEB USD limit 0
 fee transaction
