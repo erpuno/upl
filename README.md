@@ -58,7 +58,11 @@ deposit duration range monthly 1 -> 20%
         partial widthdraw disabled
         charge enabled
         fee 15% account "TAX-001"
+```
 
+Deposit Plus
+
+```
 card "deposit-plus"
 deposit duration monthly 1 2
         
