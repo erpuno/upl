@@ -1,5 +1,5 @@
-Card Processing Language
-========================
+Universal Processing Language
+=============================
 
 The objective of this project is to create small and compact
 language for payment transaction processing. Underlying instrumentation
