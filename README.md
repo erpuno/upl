@@ -47,6 +47,8 @@ payment_direction = charge | withdraw
 Examples
 --------
 
+Moneybox
+
 ```
 card "moneybox"
 deposit duration range monthly 1 -> 20%
@@ -62,7 +64,7 @@ deposit duration monthly 1 2
         
 ```
 
-
+Universal
 ```
 card PB-UNIVERSAL UAH
 limit 25K
@@ -96,6 +98,8 @@ accounts fee     PB-100001
          rate    PB-100002
          penalty PB-100003
 ```
+
+Planitum
 
 ```
 card M-PLA-CB UAH
