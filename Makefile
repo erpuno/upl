@@ -1,2 +1,2 @@
 default:
-	mad com bun cpl
+	mad com bun upl

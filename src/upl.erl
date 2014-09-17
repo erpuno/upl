@@ -1,4 +1,4 @@
--module(cpl).
+-module(upl).
 -compile(export_all).
 
 main([]) -> help();
@@ -14,19 +14,19 @@ run(Source) ->
                    E -> E end.
 
 tokenize(Source) ->
-	case cpl_lexer:string(Source) of
+	case upl_lexer:string(Source) of
 	     {ok,Tokens,_} -> {ok,Tokens};
 	                 E -> E end.
 
 parse(Tokens) ->
     io:format("Tokens: ~p~n",[Tokens]),
-	case cpl_parser:parse(Tokens) of
+	case upl_parser:parse(Tokens) of
 	     {ok,Card} -> compile(Card), {ok,Card};
 	             E -> io:format("Error ~p",[E]) end.
 
 compile(Card) -> io:format("Card ~p~n",[Card]).
 
 help() ->
-    io:format("Card Processing Language 1.0~n"),
-    io:format("     cpl filename.card  ~n"),
+    io:format("Universal Processing Language 1.0~n"),
+    io:format("     upl filename.card  ~n"),
     halt().

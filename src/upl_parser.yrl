@@ -12,7 +12,7 @@ Terminals id_ int_ long_ double_ float_ percent_ atom_ str1_ str2_
           pos ballance country system
           daily monthly annual each
           target local type name
-          amount debt credit limit status of
+          amount debt credit debit limit status of
           and or not xor min max disabled
 	      '->' '::' '\\' '=>'
 	      ';' '.' ',' '[' '|' ']' '{' '}' '='
@@ -34,6 +34,7 @@ Rules -> Rule Rules : ['$1'|'$2'].
 
 Rule -> limit Amount : {limit,line('$1'),'$2'}.
 Rule -> fee FeeRules : {fee,line('$1'),'$2'}.
+Rule -> debit ChargeRule : {debit,line('$1'),'$2'}.
 
 Amount -> unknown : unknown.
 Amount -> int_ : {int,val('$1')}.

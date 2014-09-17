@@ -25,7 +25,7 @@ Rules.
 (pos|ballance|country|system)      : {token,{list_to_atom(TokenChars),TokenLine}}.
 (daily|monthly|annual|each)        : {token,{list_to_atom(TokenChars),TokenLine}}.
 (target|local|type|name)           : {token,{list_to_atom(TokenChars),TokenLine}}.
-(amount|debt|credit|limit)         : {token,{list_to_atom(TokenChars),TokenLine}}.
+(amount|debt|credit|debit|limit)   : {token,{list_to_atom(TokenChars),TokenLine}}.
 (and|or|not|xor|status|of)         : {token,{list_to_atom(TokenChars),TokenLine}}.
 (disabled|enabled|false|true)      : {token,{list_to_atom(TokenChars),TokenLine}}.
 (on|off|min|max|unknown)           : {token,{list_to_atom(TokenChars),TokenLine}}.

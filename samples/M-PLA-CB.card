@@ -1,10 +1,24 @@
 
 -- Mykhailivsky Platinum Cash Back
 
-card M_PLA_CB USD limit unknown
-fee transaction
-        wire 50 of debt limit max 10 min 1
-        cashin 50
-        cashout 1
-        wire 50 of credit
-    monthly 10%
+card M-PLA-CB UAH
+limit unknown
+grace first 100 days then 60 days
+penalty daily 100
+        monthly add-rate 5%
+currency convert 1%
+rate monthly 4.9% of credit
+fee monthly 12 once on initial-payment
+    monthly 3% of debt limit min 50 max debt
+    monthly 1.2% of debt
+    monthly 24
+    status disabled 10
+    transaction cashin  0
+                cashout pos ATMOSPHERA 0
+                cashout country UA 5 + 1.5%
+                                _ 30 + 1%
+                wire target local 0
+                wire 0.5% of amount limit min 5 max 500
+accounts fee     M-100001
+         rate    M-100002
+         penalty M-100003
