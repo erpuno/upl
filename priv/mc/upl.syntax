@@ -2,10 +2,27 @@
 
 context default
     keyword whole unknown brightred
-    keyword whole credit yellow
+
+# Con
+
     keyword whole amount yellow
     keyword whole debt yellow
+    keyword whole withdraw yellow
+    keyword whole charge yellow
+    keyword whole duration yellow
+
+    keyword whole transaction yellow
+    keyword whole monthly yellow
+    keyword whole daily yellow
+    keyword whole annual yellow
+    keyword whole convert yellow
+    keyword whole status yellow
+
+# Constructors
+
+    keyword whole credit white
     keyword whole currency white
+    keyword whole range white
     keyword whole fee white
     keyword whole grace white
     keyword whole deposit white
@@ -24,13 +41,8 @@ context default
     keyword whole type white
     keyword whole pos white
     keyword whole country white
-    keyword whole transaction yellow
-    keyword whole monthly yellow
-    keyword whole daily yellow
-    keyword whole annual yellow
-    keyword whole convert yellow
-    keyword whole status yellow
     keyword whole disabled brightcyan
+    keyword whole enabled brightcyan
     keyword whole add-rate brightcyan
     keyword whole wire brightcyan
     keyword whole cashin brightcyan
