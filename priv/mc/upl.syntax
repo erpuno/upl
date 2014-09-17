@@ -1,15 +1,21 @@
 # Syntax rules for the Card Processing Language
 
 context default
+
+# DEC64 business format
+
+    keyword whole \[\-\.0123456789\]%  brightred
     keyword whole unknown brightred
 
-# Con
+# Deposit
 
     keyword whole amount yellow
     keyword whole debt yellow
     keyword whole withdraw yellow
     keyword whole charge yellow
     keyword whole duration yellow
+
+# Credit
 
     keyword whole transaction yellow
     keyword whole monthly yellow
@@ -21,11 +27,11 @@ context default
 # Constructors
 
     keyword whole credit white
+    keyword whole deposit white
     keyword whole currency white
     keyword whole range white
     keyword whole fee white
     keyword whole grace white
-    keyword whole deposit white
     keyword whole rate white
     keyword whole penalty white
     keyword whole card white
@@ -41,6 +47,9 @@ context default
     keyword whole type white
     keyword whole pos white
     keyword whole country white
+
+# Simple
+
     keyword whole disabled brightcyan
     keyword whole enabled brightcyan
     keyword whole add-rate brightcyan
@@ -48,5 +57,4 @@ context default
     keyword whole cashin brightcyan
     keyword whole cashout brightcyan
     keyword whole accounts brightgreen
-    keyword whole \[\-\.0123456789\]%  brightred
 
