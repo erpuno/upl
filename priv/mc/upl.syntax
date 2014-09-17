@@ -1,0 +1,40 @@
+# Syntax rules for the Card Processing Language
+
+context default
+    keyword whole unknown brightred
+    keyword whole credit yellow
+    keyword whole amount yellow
+    keyword whole debt yellow
+    keyword whole currency white
+    keyword whole fee white
+    keyword whole grace white
+    keyword whole deposit white
+    keyword whole rate white
+    keyword whole penalty white
+    keyword whole card white
+    keyword whole limit white
+    keyword whole max white
+    keyword whole min white
+    keyword whole of white
+    keyword whole or white
+    keyword whole days white
+    keyword whole target white
+    keyword whole source white
+    keyword whole local white
+    keyword whole type white
+    keyword whole pos white
+    keyword whole country white
+    keyword whole transaction yellow
+    keyword whole monthly yellow
+    keyword whole daily yellow
+    keyword whole annual yellow
+    keyword whole convert yellow
+    keyword whole status yellow
+    keyword whole disabled brightcyan
+    keyword whole add-rate brightcyan
+    keyword whole wire brightcyan
+    keyword whole cashin brightcyan
+    keyword whole cashout brightcyan
+    keyword whole accounts brightgreen
+    keyword whole \[\-\.0123456789\]%  brightred
+
