@@ -1,9 +1,9 @@
 
--- Privat MoneyBox Deposit
+-- Privat Deposit Plus
 
 -- account: "JNDI/LDAP address"
 
-card "moneybox" UAH
+card "Deposit-Plus" UAH
 deposit duration range monthly 1 -> 20%
                        monthly 3 -> 22%
                        monthly 6 -> 22% of amount 
