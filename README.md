@@ -40,8 +40,12 @@ Components
 ----------
 
 ```
-charge_rule = Fixed + Percent [ of amount (default) | of debt | of credit ]
 payment_direction = charge | withdraw
+charge_rule = Fixed + Percent [ of amount (default)
+                              | of debt 
+                              | of credit 
+                              | of deposit 
+                              | of rate ]
 ```
 
 Examples
@@ -63,9 +67,19 @@ deposit duration range monthly 1 -> 20%
 Deposit Plus
 
 ```
-card "deposit-plus"
-deposit duration monthly 1 2
-        
+card "Deposit-Plus" UAH
+deposit duration range monthly 1 -> 20%
+                       monthly 3 -> 22%
+                       monthly 6 -> 22%
+                       annual -> 23%
+        withdraw disabled
+        auto
+        charge enabled limit max 20000 monthly
+        monthly 1% of amount to account "Bonus-Plus"
+        final move from rate to deposit -- Capitalization
+        fee 15% name "tax" account "users/maxim/accounts/TAX-001"
+accounts deposit "users/maxim/accounts/MB-0001"
+         rate "users/maxim/accounts/MB-0001-Percents"
 ```
 
 Universal
