@@ -10,8 +10,8 @@ deposit duration range monthly 1 -> 20%
                                         to account "users/maxim/accounts/MB-0001-Percents"
                        annual -> 23% of amount
         withdraw disabled
-        charge enabled
-        final 1% of amount to account "Bonus-Plus"
+        charge enabled limit max 20000 monthly
+        monthly 1% of amount to account "Bonus-Plus"
         fee 15% name "tax" account "users/maxim/accounts/TAX-001"
 accounts deposit "users/maxim/accounts/MB-0001"
          rate "users/maxim/accounts/MB-0001-Percents"
