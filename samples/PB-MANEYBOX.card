@@ -6,11 +6,12 @@
 card "moneybox" UAH
 deposit duration range monthly 1 -> 20%
                        monthly 3 -> 22%
-                       monthly 6 -> 22% of amount on account "users/maxim/accounts/MB-0001-Percents"
+                       monthly 6 -> 22% of amount 
+                                        to account "users/maxim/accounts/MB-0001-Percents"
                        annual -> 23% of amount
         withdraw disabled
         charge enabled
-        monthly 1% of debit on account
+        final 1% of amount to account "Bonus-Plus"
         fee 15% name "tax" account "users/maxim/accounts/TAX-001"
 accounts deposit "users/maxim/accounts/MB-0001"
          rate "users/maxim/accounts/MB-0001-Percents"
