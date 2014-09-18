@@ -2,12 +2,19 @@
 % Card Processing Language
 % Copyright (c) 2014 Synrc Research Center s.r.o.
 
+% Program Sections:  limit grace credit rate deposit accounts
+% Deposit Rules:     duration withdraw charge auto fee final
+% Credit Rules:      transaction status
+% Transaction Rules: cashin cashout wire
+
 Nonterminals Card Rules Rule Currency Amount CreditRules CreditRule
              TransRules Limit AmountType ChargeRule DepositRule DepositRules
-             Enabled AccountList Name DurationList.
+             Enabled AccountList Name DurationList Account Periodically ChargeRuleLimit.
 
 Terminals id_ int_ long_ double_ float_ percent_ atom_ str1_ str2_
-          card limit grace accounts
+          auto final from move to
+          days withdraw charge duration range
+          card limit grace accounts account
           rate penalty fee deposit unknown
           transaction cashin cashout wire
           pos ballance country system
@@ -33,7 +40,6 @@ Currency -> id_ : id('$1').
 Rules -> '$empty' : [].
 Rules -> Rule Rules : ['$1'|'$2'].
 
-% Program Sections limit grace credit rate deposit accounts (6)
 
 Rule -> limit    Amount       : {limit,'$2'}.
 Rule -> grace    Amount days  : {grace,'$2'}.
@@ -54,10 +60,13 @@ CreditRules -> CreditRule CreditRules : ['$1'|'$2'].
 
 ChargeRuleLimit -> Amount : {charge,'$1'}.
 ChargeRuleLimit -> Amount of AmountType Limit : {charge,'$3','$1','$4'}.
+ChargeRuleLimit -> Limit : '$1'.
+
+ChargeRule -> ChargeRuleLimit                             : {fee,[],'$1'}.
 ChargeRule -> ChargeRuleLimit name str1_                  : {fee,[{account,default},{name,val('$3')}],'$1'}.
 ChargeRule -> ChargeRuleLimit to account str1_            : {fee,[{account,val('$4')},{name,[]}],'$1'}.
-ChargeRule -> ChargeRuleLimit name str1_ to account str1_ : {fee,[{account,val('$6')},{name,val('$4')],'$1'}.
-ChargeRule -> ChargeRuleLimit to account str1_ name str1_ : {fee,[{account,val('$4'),{name,val('$6')}],'$1'}.
+ChargeRule -> ChargeRuleLimit name str1_ to account str1_ : {fee,[{account,val('$6')},{name,val('$3')}],'$1'}.
+ChargeRule -> ChargeRuleLimit to account str1_ name str1_ : {fee,[{account,val('$4')},{name,val('$6')}],'$1'}.
 
 AccountList -> '$empty' : [].
 AccountList -> Account AccountList : ['$1'|'$2'].
@@ -66,31 +75,26 @@ Account -> credit  str1_ : {credit,val('$2')}.
 Account -> rate    str1_ : {rate,val('$2')}.
 Account -> deposit str1_ : {deposit,val('$2')}.
 
-Periodically -> '$empty' : [].
-Periodically -> monthly Amount '->' ChargeRule : {monthly,'$2','$3'}.
-Periodically -> monthly ChargeRule           : {monthly,1,'$2'}.
-Periodically -> daily ChargeRule             : {daily,'$2'}.
-
-% Deposit Rules ()
+Periodically -> monthly Amount '->' ChargeRule : {monthly,'$2','$4'}.
+Periodically -> monthly ChargeRule             : {monthly,1,'$2'}.
+Periodically -> daily ChargeRule               : {daily,'$2'}.
+Periodically -> annual ChargeRule              : {annual,'$2'}.
 
 DepositRule -> duration Periodically        : {duration,['$2']}.
 DepositRule -> duration range DurationList  : {duration,'$3'}.
 DepositRule -> withdraw Enabled             : {withdraw,'$2'}.
 DepositRule -> charge Enabled               : {charge,'$2',none}.
 DepositRule -> charge Enabled Periodically  : {charge,'$2','$3'}.
-DepositRule -> Periodically                 : '$1'.
 DepositRule -> auto                         : {auto}.
-DepositRule -> fee ChargeRule               : {fee,'$2'}.
-DepositRule -> final move from id_ to id_   : {final,move,'$4','$6'].
+DepositRule -> final move from id_ to id_   : {final,move,'$4','$6'}.
+DepositRule -> fee ChargeRule               : '$1'.
+DepositRule -> Periodically                 : '$1'.
 
-% Credit Rules
 
 CreditRule -> transaction TransRules : {transaction,'$2'}.
-CreditRule -> monthly ChargeRule     : {monthly,'$2'}.
-CreditRule -> daily ChargeRule       : {daily,'$2'}.
 CreditRule -> status Enabled Amount  : {status,'$2','$3'}.
+CreditRule -> Periodically           : '$1'.
 
-% Transaction Rules
 
 TransRules -> '$empty' : [].
 TransRules -> cashin  Amount     TransRules : [{cashin,'$2'}|'$3'].

@@ -143,6 +143,39 @@ accounts fee     M-100001
          penalty M-100003
 ```
 
+UPL TREE
+--------
+
+```erlang
+    {card,6,
+         {name,'Deposit_Plus'},
+         {currency,'UAH'},
+         [{deposit,
+              [{duration,
+                   [{monthly,{int,1},{fee,[],{charge,{percent,0.2}}}},
+                    {monthly,{int,3},{fee,[],{charge,{percent,0.22}}}},
+                    {monthly,
+                        {int,6},
+                        {fee,
+                            [{account,"users/maxim/accounts/MB-0001-Percents"},
+                             {name,[]}],
+                            {charge,amount,{percent,0.22},undefined}}},
+                    {annual,
+                        {fee,[],{charge,amount,{percent,0.23},undefined}}}]},
+               {withdraw,disabled},
+               {auto},
+               {charge,enabled,
+                   {monthly,1,{fee,[],{limit,[{max,{int,20000}}]}}}},
+               {monthly,1,
+                   {fee,
+                       [{account,"Bonus_Plus"},{name,[]}],
+                       {charge,amount,{percent,0.01},undefined}}},
+               {fee,17}]},
+          {accounts,
+              [{deposit,"users/maxim/accounts/MB-0001"},
+               {rate,"users/maxim/accounts/MB-0001-Percents"}]}]}
+```
+
 Credits
 -------
 
