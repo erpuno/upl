@@ -2,7 +2,7 @@
 % Card Processing Language
 % Copyright (c) 2014 Synrc Research Center s.r.o.
 
-% Program Sections:  limit grace credit rate deposit accounts
+% Program Sections:  limit grace credit rate deposit accounts version
 % Deposit Rules:     duration withdraw charge auto fee final
 % Credit Rules:      transaction status
 % Transaction Rules: cashin cashout wire
@@ -12,7 +12,7 @@ Nonterminals Card Rules Rule Currency Amount CreditRules CreditRule
              Enabled AccountList Name DurationList Account Periodically ChargeRuleLimit.
 
 Terminals id_ int_ long_ double_ float_ percent_ atom_ str1_ str2_
-          auto final from move to
+          auto final from move to version
           days withdraw charge duration range
           card limit grace accounts account
           rate penalty fee deposit unknown
@@ -45,6 +45,7 @@ Rule -> limit    Amount       : {limit,'$2'}.
 Rule -> grace    Amount days  : {grace,'$2'}.
 Rule -> credit   CreditRules  : {credit,'$2'}.
 Rule -> rate     ChargeRule   : {rate,'$2'}.
+Rule -> version  Amount       : {version,'$2'}.
 Rule -> deposit  DepositRules : {deposit,'$2'}.
 Rule -> accounts AccountList  : {accounts,'$2'}.
 
@@ -82,7 +83,7 @@ Periodically -> annual ChargeRule              : {annual,'$2'}.
 
 DepositRule -> duration Periodically        : {duration,['$2']}.
 DepositRule -> duration range DurationList  : {duration,'$3'}.
-DepositRule -> withdraw Enabled             : {withdraw,'$2'}.
+DepositRule -> withdraw Enabled             : begin io:format("withdraw~n"), {withdraw,'$2'} end.
 DepositRule -> charge Enabled               : {charge,'$2',none}.
 DepositRule -> charge Enabled Periodically  : {charge,'$2','$3'}.
 DepositRule -> auto                         : {auto}.

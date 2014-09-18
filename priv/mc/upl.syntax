@@ -14,6 +14,7 @@ context default
     keyword whole withdraw yellow
     keyword whole charge yellow
     keyword whole duration yellow
+    keyword whole final yellow
 
 # Credit
 
@@ -26,6 +27,13 @@ context default
 
 # Constructors
 
+    keyword whole account white
+    keyword whole on white
+    keyword whole to white
+    keyword whole version white
+    keyword whole name white
+    keyword whole from white
+    keyword whole move white
     keyword whole credit white
     keyword whole deposit white
     keyword whole currency white
@@ -47,6 +55,7 @@ context default
     keyword whole type white
     keyword whole pos white
     keyword whole country white
+    keyword whole auto white
 
 # Simple
 
