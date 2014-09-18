@@ -24,7 +24,7 @@ parse(Tokens) ->
 	     {ok,Card} -> compile(Card), {ok,Card};
 	             E -> io:format("Error ~p",[E]) end.
 
-compile(Card) -> io:format("Card ~p~n",[Card]).
+compile(Card) -> io:format("Card ~64p~n",[Card]).
 
 help() ->
     io:format("Universal Processing Language 1.0~n"),
