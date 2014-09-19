@@ -1,0 +1,10 @@
+
+-- Privat CashBack loyalty program
+
+name 'ShopList' range 
+            name "ЮВЕЛІРНІ ВИРОБИ" account '+38(067)698-17-81' address rate 10%
+            name "НИКОЛАЇВСЬКА Е.Б." account '+38 (093) 793-10-86' rate 7%
+                    address 'пр-т Московський, 34В' tag 'МОТО,АКСЕСУАРЫ'
+
+program "BonusPlus"
+rate transaction target match ShopList rate of amount to account '/users/:client/bonus'

@@ -24,6 +24,6 @@ credit monthly 5% of debt limit min 50 max debt
                      target local 0.5% of amount limit max 200 or 4% of credit
                      target _ 1% limit min 3 or 4% of credit
                      target _ type phone 2
-accounts credit  PB-100001
-         rate    PB-100002
-         penalty PB-100003
+accounts credit  'users/:client/credit'
+         rate    'users/:client/rate'
+         penalty 'users/:client/credit'

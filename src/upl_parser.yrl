@@ -45,6 +45,7 @@ Rule -> limit    Amount       : {limit,'$2'}.
 Rule -> grace    Amount days  : {grace,'$2'}.
 Rule -> credit   CreditRules  : {credit,'$2'}.
 Rule -> rate     ChargeRule   : {rate,'$2'}.
+Rule -> rate     CreditRules  : {rate,'$2'}.
 Rule -> version  Amount       : {version,'$2'}.
 Rule -> deposit  DepositRules : {deposit,'$2'}.
 Rule -> accounts AccountList  : {accounts,'$2'}.

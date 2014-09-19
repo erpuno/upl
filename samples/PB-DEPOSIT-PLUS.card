@@ -1,20 +1,21 @@
 
 -- Privat Deposit Plus
 
--- account: "JNDI/LDAP address"
+-- account: "JNDI/LDAP/REST address"
 
 program Deposit_Plus UAH
+include 'PB-CASHBACK'
 version 1
 deposit duration range monthly 1 -> 20%
                        monthly 3 -> 22%
                        monthly 6 -> 22% of amount 
-                                        to account 'users/maxim/accounts/MB-0001-Percents'
+                                        to account 'users/:client/rate'
                        annual 23% of amount
         withdraw disabled
         auto
         charge enabled monthly limit max 20000
-        monthly 1% of amount to account 'Bonus_Plus'
+        monthly 1% of amount to account 'bonus' -- '/users/:client/bonus'
 --        final move from rate to deposit
-        fee 15% name 'tax' to account 'users/maxim/accounts/TAX-001'
-accounts deposit 'users/maxim/accounts/MB-0001'
-         rate 'users/maxim/accounts/MB-0001-Percents'
+        fee 15% name 'tax' to account 'users/:client/tax'
+accounts deposit 'users/:client/deposit'
+         rate 'users/:client/rate'
