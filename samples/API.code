@@ -43,26 +43,26 @@ include 'SETUP' user ':client' accounts account ':acc' ':tariff'
 success commit
 
 program 'PAY'
-include 'PAY-BONUS' :client :benefeciar
-include 'PAY-ANY' :client :benefeciar
+include 'PAY-BONUS' :client :beneficiar
+include 'PAY-ANY' :client :beneficiar
 
     program 'PAY-BONUS'
-    prepare transaction from account 'users/:client/bonus' to account 'shops/:benefeciar'
+    prepare transaction from account 'users/:client/bonus' to account 'shops/:beneficiar'
     prepare event 'users/:client'
     success commit
 
     program 'PAY-ANY'
-    prepare transaction from account 'users/:client' to account ':benefeciar'
+    prepare transaction from account 'users/:client' to account ':beneficiar'
     prepare event 'users/:client'
     success commit
 
 program 'SWIFT'
-prepare transaction from account 'users/:client' to account ':benefeciar'
+prepare transaction from account 'users/:client' to account ':beneficiar'
 prepare event 'users/:client'
 success commit
 
 program 'LOCAL'
-prepare transaction from account 'users/:client' to account 'users/:benefeciar'
+prepare transaction from account 'users/:client' to account 'users/:beneficiar'
 prepare event 'users/:client'
-prepare event 'users/:benefeciar'
+prepare event 'users/:beneficiar'
 success commit
