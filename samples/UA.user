@@ -1,0 +1,11 @@
+
+user 'Regular'
+     auth
+     transaction currency UAH target 'NBU' 15000 per day
+                 currency EUR target 'Treasure' 1000 per day
+                 card UAH 150000 per day
+                 card EUR 15000 UAH per day
+cards 'M-PLA-CB'
+      'PB-DEPOSIT-PLUS'
+      'PB-UNIVERSAL' auto
+      'Platinum-Debit'
