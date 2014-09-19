@@ -25,5 +25,6 @@ credit monthly 5% of debt limit min 50 max debt
                      target _ 1% limit min 3 or 4% of credit
                      target _ type phone 2
 accounts credit  'users/:client/credit'
+         deposit 'users/:client/credit'
          rate    'users/:client/rate'
          penalty 'users/:client/credit'

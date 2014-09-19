@@ -1,0 +1,26 @@
+
+-- Accounts Directory Space
+
+--  /personal/:client          -- default local :client account
+--  /external/visa/:client     -- default account of swift/visa/master
+--  /external/master/:client
+--  /external/swift/:client
+--  /internet/paypal/:client   -- internet payments
+--  /internet/webmoney/:client
+
+program 'PAY-BONUS'
+perform transaction from account 'users/:client/bonus' to account 'shops/:benefeciar/payments'
+success commit
+
+program 'PAY-ANY'
+perform transaction from account 'users/:client' to account ':benefeciar/payments'
+success commit
+
+program 'LOCAL'
+perform transaction from account 'users/:client' to account 'users/:benefeciar'
+success commit
+
+program 'PAY'
+include 'PAY-BONUS' :client :benefeciar
+include 'PAY-ANY' :client :benefeciar
+

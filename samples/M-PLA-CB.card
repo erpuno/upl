@@ -8,17 +8,17 @@ penalty daily 100
         monthly add-rate 5%
 currency convert 1%
 rate monthly 4.9% of credit
-fee monthly 12 once on initial-payment
-    monthly 3% of debt limit min 50 max debt
-    monthly 1.2% of debt
-    monthly 24
-    status disabled 10
+credit monthly 12 once on initial-payment
+       monthly 3% of debt limit min 50 max debt
+       monthly 1.2% of debt
+       monthly 24
+        status disabled 10
     transaction cashin  0
                 cashout pos ATMOSPHERA 0
                 cashout country UA 5 + 1.5%
                                 _ 30 + 1%
                 wire target local 0
                 wire 0.5% of amount limit min 5 max 500
-accounts fee     M-100001
-         rate    M-100002
-         penalty M-100003
+accounts credit  '/users/:client/credit'
+         rate    '/users/:client/rate'
+         penalty '/users/:client/credit'

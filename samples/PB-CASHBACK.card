@@ -1,5 +1,9 @@
 
 -- Privat CashBack loyalty program
+--
+-- usage:
+--         program 'PB-UNIVERSAL'
+--         include 'PB-CASHBACK'
 
 name 'ShopList' range 
             name "ЮВЕЛІРНІ ВИРОБИ" account '+38(067)698-17-81' address rate 10%

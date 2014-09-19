@@ -6,6 +6,6 @@ user 'Regular'
                  card UAH 150000 per day
                  card EUR 15000 UAH per day
 programs 'M-PLA-CB'
-      'PB-DEPOSIT-PLUS'
-      'PB-UNIVERSAL' auto
-      'Platinum-Debit'
+         'PB-DEPOSIT-PLUS'
+         'PB-UNIVERSAL' auto
+         'Platinum-Debit'

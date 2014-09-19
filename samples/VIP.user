@@ -7,6 +7,6 @@ version '12/11/2014'
      transaction currency UAH target 'NBU' 15000 per day
                  currency EUR target 'Treasure' 1000 per day
 programs 'M-PLA-CB'
-      'PB-DEPOSIT-PLUS'
-      'PB-UNIVERSAL' auto
-      'Platinum-Debit'
+         'PB-DEPOSIT-PLUS'
+         'PB-UNIVERSAL' auto
+         'Platinum-Debit'
