@@ -14,10 +14,28 @@ we provide reference back-end Erlang system implementation
 for transactions processing. Also DSL gives us a natural and easy
 verification strategies and compactifications.
 
+\vspace{1\baselineskip}
+\begin{lstlisting}[caption=Deposit Program]
+    program Deposit_Plus UAH
+    include 'PB-CASHBACK'
+    deposit duration range monthly 1 -> 20%
+                           monthly 3 -> 22%
+                           monthly 6 -> 22%
+                           annual 23%
+            withdraw disabled
+            auto
+            charge enabled monthly limit max 20000
+            monthly 1% of amount to account 'bonus'
+            monthly 15% name 'tax' of deposit 
+                        to account 'users/:client/tax'
+\end{lstlisting}
+\vspace{1\baselineskip}
+
 This language could be easily extended to other domain aread like
 internet payment processing, shopping mall bonus programs, mobile
 operators tariff plans.
 
+\newpage
 \subsection{Objectives}
 
 The aim is to create small and compact language for payment
@@ -35,6 +53,34 @@ We have several criterias to satistfy:
      \item[Fasten]~Time-to-market
      \item[Taxonomy]~driven managability for billing plugins
 \end{description}
+
+\subsection{Operations}
+
+\paragraph{}User Creation:
+
+\begin{lstlisting}
+    prepare user ':client' 
+        name     ':fullname'
+        age      ':birth'
+        phone    ':ph'
+        document ':passport'
+        accounts 
+            credit '/users/:client/credit' program 'PB-UNIVERSAL'
+            account '/users/:client/:acc' program ':tariff'
+\end{lstlisting}
+
+\paragraph{}Process Transaction:
+
+\begin{lstlisting}
+    prepare transaction from account 'users/:client' 
+                          to account ':benefeciar'
+\end{lstlisting}
+
+\paragraph{}Notifying:
+
+\begin{lstlisting}
+    prepare event 'users/:client'
+\end{lstlisting}
 
 \newpage
 \subsection{Programs}
