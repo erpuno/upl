@@ -46,15 +46,15 @@ movements on account with a given card defenition.
 \vspace{1\baselineskip}
 \begin{lstlisting}[caption=BNF]
 
-Program = card Name Currency Forms
+    Program = card Name Currency Forms
 
-Form = limit Amount
-     | grace Amount days
-     | credit CreditRules
-     | rate ChargeRule
-     | version Amount
-     | deposit DepositRules
-     | accounts AccountList
+    Form = limit Amount
+         | grace Amount days
+         | credit CreditRules
+         | rate ChargeRule
+         | version Amount
+         | deposit DepositRules
+         | accounts AccountList
 \end{lstlisting}
 \vspace{1\baselineskip}
 
@@ -79,21 +79,21 @@ call language forms.
 \vspace{1\baselineskip}
 \begin{lstlisting}[caption=BNF]
 
-Direction = charge 
-          | withdraw
+    Direction = charge 
+              | withdraw
 
-ChargeRule = Fixed + Percent
-             of <amount | debt | credit | deposit | rate>
-             limit <min Amount> | <max Amount>
-             name Name
-             to account Name
+    ChargeRule = Fixed + Percent
+                 of <amount | debt | credit | deposit | rate>
+                 limit <min Amount> | <max Amount>
+                 name Name
+                 to account Name
 
-Periodically = monthly Amount 
-             | monthly Months -> ChargeRule
-             | daily ChargeRule
-             | annual ChargeRule
+    Periodically = monthly Amount 
+                 | monthly Months -> ChargeRule
+                 | daily ChargeRule
+                 | annual ChargeRule
 
-Account := <credit | rate | deposit> Name
+    Account := <credit | rate | deposit> Name
 
 \end{lstlisting}
 \vspace{1\baselineskip}
