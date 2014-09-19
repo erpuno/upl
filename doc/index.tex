@@ -37,16 +37,16 @@ We have several criterias to satistfy:
 \end{description}
 
 \newpage
-\subsection{Cards}
+\subsection{Programs}
 
-Cards are tariff programs, set of rules that we plug to transaction processing.
+Programs are tariff programs, set of rules that we plug to transaction processing.
 It feels like set of filters triggered each time we fire money
 movements on account with a given card defenition.
 
 \vspace{1\baselineskip}
 \begin{lstlisting}[caption=BNF]
 
-    Program = card Name Currency Forms
+    Program = program Name Currency Forms
 
     Form = limit Amount
          | grace Amount days
@@ -62,7 +62,7 @@ Example:
 
 \vspace{1\baselineskip}
 \begin{lstlisting}[caption=credit.card]
-    card PLA_DEB USD
+    program PLA_DEB USD
     limit 20000
     version 1.0
     credit monthly 10%
