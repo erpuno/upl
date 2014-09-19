@@ -14,7 +14,7 @@ Nonterminals Card Rules Rule Currency Amount CreditRules CreditRule
 Terminals id_ int_ long_ double_ float_ percent_ atom_ str1_ str2_
           auto final from move to version
           days withdraw charge duration range
-          card limit grace accounts account
+          program limit grace accounts account
           rate penalty fee deposit unknown
           transaction cashin cashout wire
           pos ballance country system
@@ -32,7 +32,7 @@ Terminals id_ int_ long_ double_ float_ percent_ atom_ str1_ str2_
 
 Rootsymbol Card.
 
-Card -> card id_ Currency Rules : {card,line('$1'),{name,id('$2')},{currency,'$3'},'$4'}.
+Card -> program id_ Currency Rules : {program,line('$1'),{name,id('$2')},{currency,'$3'},'$4'}.
 
 Currency -> '$empty' : default.
 Currency -> id_ : id('$1').

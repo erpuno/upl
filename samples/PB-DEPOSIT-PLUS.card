@@ -3,7 +3,7 @@
 
 -- account: "JNDI/LDAP address"
 
-card Deposit_Plus UAH
+program Deposit_Plus UAH
 version 1
 deposit duration range monthly 1 -> 20%
                        monthly 3 -> 22%

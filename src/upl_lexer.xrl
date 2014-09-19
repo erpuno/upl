@@ -19,7 +19,7 @@ Rules.
 {D}+\.{D}+%                        : {token,{percent_,to_float(TokenChars)/100,TokenLine}}.
 {D}++%                             : {token,{percent_,to_integer(TokenChars)/100,TokenLine}}.
 
-(card|limit|grace|accounts)        : {token,{list_to_atom(TokenChars),TokenLine}}.
+(program|limit|grace|accounts)        : {token,{list_to_atom(TokenChars),TokenLine}}.
 (rate|penalty|fee|deposit)         : {token,{list_to_atom(TokenChars),TokenLine}}.
 (transaction|cashin|cashout|wire)  : {token,{list_to_atom(TokenChars),TokenLine}}.
 (pos|ballance|country|system)      : {token,{list_to_atom(TokenChars),TokenLine}}.

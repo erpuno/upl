@@ -1,7 +1,7 @@
 
 -- Privat Universal Card
 
-card PB-UNIVERSAL UAH
+program PB-UNIVERSAL UAH
 limit 25000
 grace 55 days
 deposit annual 10% limit min 100

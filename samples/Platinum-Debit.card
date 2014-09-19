@@ -5,7 +5,7 @@
 --
 --      $ upl samples/Platinum-Debit.card
 
-card PLA_DEB USD limit 0
+program PLA_DEB USD limit 0
 credit transaction wire 50 of debt limit max 10 min 1
                    cashin 50
                    cashout 1

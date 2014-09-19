@@ -1,7 +1,7 @@
 
 -- Mykhailivsky Platinum Cash Back
 
-card M-PLA-CB UAH
+program M-PLA-CB UAH
 limit unknown
 grace first 100 days then 60 days
 penalty daily 100
