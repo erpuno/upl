@@ -28,12 +28,12 @@ PL/SQL and other languages currently involved in banking card processing.
 We have several criterias to satistfy:
 
 \begin{description}
-  \item[English] self-explanatory domain language
-  \item[Clean] lexical tokens set
-  \item[Optimized] language forms for compact language core
-  \item[Verification]
-  \item[Fasten] Time-to-market
-  \item[Taxonomy] driven managability for billing plugins
+     \item[English]~self-explanatory domain language
+     \item[Clean]~lexical tokens set
+     \item[Optimized]~language forms for compact language core
+     \item[Verification]
+     \item[Fasten]~Time-to-market
+     \item[Taxonomy]~driven managability for billing plugins
 \end{description}
 
 \newpage
@@ -69,6 +69,18 @@ Example:
 \end{lstlisting}
 \vspace{1\baselineskip}
 
+
+Programs are stored in its own space.
+
+\vspace{1\baselineskip}
+\begin{lstlisting}
+    /programs/PB-UNIVERSAL.card
+    /programs/PB-DEPOSIT-PLUS.card
+    /programs/API.code
+    /programs/UA.user
+\end{lstlisting}
+\vspace{1\baselineskip}
+
 \newpage
 \subsection{Language Forms}
 
@@ -95,6 +107,45 @@ call language forms.
 
     Account := <credit | rate | deposit> Name
 
+\end{lstlisting}
+\vspace{1\baselineskip}
+
+\subsection{Accounts}
+
+Enterprise Tree handles clients, accounts, transactions, programs, events.
+Programs could be assigned to each node and fires atomatically on access.
+
+\vspace{1\baselineskip}
+\begin{lstlisting}
+    /personal/:client
+    /personal/:client/bonus
+    /personal/:client/credit
+    /personal/:client/deposit
+    /personal/:client/rate
+\end{lstlisting}
+\vspace{1\baselineskip}
+
+\subsection{External Services}
+
+External service has its own endpoints, and could be addresses mounted to local system.
+
+\vspace{1\baselineskip}
+\begin{lstlisting}
+    /external/visa/:client
+    /external/master/:client
+    /external/swift/:client
+    /internet/paypal/:client
+    /bonus/:client
+\end{lstlisting}
+\vspace{1\baselineskip}
+
+\subsection{Transactions}
+
+Transactions are stored per each client's account.
+
+\vspace{1\baselineskip}
+\begin{lstlisting}
+    /personal/:client/transactions
 \end{lstlisting}
 \vspace{1\baselineskip}
 

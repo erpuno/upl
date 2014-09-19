@@ -24,6 +24,10 @@
 -- SWIFT
 -- LOCAL
 
+-- form          wf:render
+-- transaction   kvs:add
+-- event         mqs:publish
+
 program 'SETUP'
 prepare user     ':client' 
         name     ':fullname'
