@@ -1,26 +1,64 @@
 
 -- Accounts Directory Space
+--
+--  /personal/:client          -- default local :client account e.g. /personal/:client/credit
+--  /personal/:client/bonus
+--  /personal/:client/credit
+--  /personal/:client/deposit
+--  /personal/:client/rate
 
---  /personal/:client          -- default local :client account
 --  /external/visa/:client     -- default account of swift/visa/master
 --  /external/master/:client
 --  /external/swift/:client
+
 --  /internet/paypal/:client   -- internet payments
 --  /internet/webmoney/:client
 
-program 'PAY-BONUS'
-perform transaction from account 'users/:client/bonus' to account 'shops/:benefeciar/payments'
+--  /bonus/:client   -- internet payments
+
+-- Public API
+--
+-- SETUP
+-- ADD-ACCOUNT
+-- PAY
+-- SWIFT
+-- LOCAL
+
+program 'SETUP'
+prepare user     ':client' 
+        name     ':fullname'
+        age      ':birth'
+        phone    ':ph'
+        document ':passport'
+        accounts credit '/users/:client/credit' program 'PB-UNIVERSAL'
+                 account '/users/:client/:acc' program ':tariff'
 success commit
 
-program 'PAY-ANY'
-perform transaction from account 'users/:client' to account ':benefeciar/payments'
-success commit
-
-program 'LOCAL'
-perform transaction from account 'users/:client' to account 'users/:benefeciar'
+program 'ADD-ACCOUNT'
+include 'SETUP' user ':client' accounts account ':acc' ':tariff'
 success commit
 
 program 'PAY'
 include 'PAY-BONUS' :client :benefeciar
 include 'PAY-ANY' :client :benefeciar
 
+    program 'PAY-BONUS'
+    prepare transaction from account 'users/:client/bonus' to account 'shops/:benefeciar'
+    prepare event 'users/:client'
+    success commit
+
+    program 'PAY-ANY'
+    prepare transaction from account 'users/:client' to account ':benefeciar'
+    prepare event 'users/:client'
+    success commit
+
+program 'SWIFT'
+prepare transaction from account 'users/:client' to account ':benefeciar'
+prepare event 'users/:client'
+success commit
+
+program 'LOCAL'
+prepare transaction from account 'users/:client' to account 'users/:benefeciar'
+prepare event 'users/:client'
+prepare event 'users/:benefeciar'
+success commit
