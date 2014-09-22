@@ -54,7 +54,7 @@ Examples
 Moneybox
 
 ```
-card "moneybox"
+program "moneybox"
 deposit duration range monthly 1 -> 20%
                        monthly 3 -> 22%
                        monthly 6 -> 22% of amount
@@ -67,7 +67,7 @@ deposit duration range monthly 1 -> 20%
 Deposit Plus
 
 ```
-card "Deposit-Plus" UAH
+program "Deposit-Plus" UAH
 deposit duration range monthly 1 -> 20%
                        monthly 3 -> 22%
                        monthly 6 -> 22%
@@ -84,9 +84,9 @@ accounts deposit "users/maxim/accounts/MB-0001"
 
 Universal
 ```
-card PB-UNIVERSAL UAH
+program PB-UNIVERSAL UAH
 limit 25K
-grace-period 55 days
+grace 55 days
 deposit duration range monthly 1 -> 20%
                        monthly 3 -> 22%
                        monthly 6 -> 22% of amount
@@ -120,7 +120,7 @@ accounts fee     PB-100001
 Planitum
 
 ```
-card M-PLA-CB UAH
+program M-PLA-CB UAH
 limit unknown
 grace duration range number 1 -> 100
                                _ 60 days
