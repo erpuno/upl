@@ -177,6 +177,36 @@ UPL TREE
                {rate,"users/maxim/accounts/MB-0001-Percents"}]}]}
 ```
 
+Even for Investment Banking, Swap trade Sample:
+
+```
+instrument 'Stub_Amort_Swap'
+parties name DB id PARTYAUS33 trade DB-0001
+        name Barclays id BARCGB2L trade SW2000
+
+stream pay Barclays rate 'EUR-LIBOR-BBA' monthly 6 of
+       notional range 06/14/1995 50000000
+                      12/14/1995 40000000
+                      12/14/1996 30000000
+                      12/14/1997 20000000
+                      12/14/1998 10000000
+       from 06/14/1995 to 12/14/1999 adjust MODFOLLOWING
+       recalculate monthly 6 roll 14
+       fraction 'ACT/360'
+       calendar GBLO
+
+stream pay DB rate 6% annual of
+       notional range 06/14/1995 50000000
+                      12/14/1995 40000000
+                      12/14/1996 30000000
+                      12/14/1997 20000000
+                      12/14/1998 10000000
+       recalculate annual roll 14
+       calendar DEFR
+       fraction '30E/360'
+
+```
+
 Credits
 -------
 
