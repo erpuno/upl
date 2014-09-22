@@ -5,7 +5,7 @@ instrument 'Stub_Amort_Swap'
 parties name DB id PARTYAUS33 trade DB-0001
         name Barclays id BARCGB2L trade SW2000
 
-stream pay Barcleys rate 'EUR-LIBOR-BBA' monthly 6 of
+stream pay Barclays rate 'EUR-LIBOR-BBA' monthly 6 of
        notional range 06/14/1995 50000000
                       12/14/1995 40000000
                       12/14/1996 30000000
