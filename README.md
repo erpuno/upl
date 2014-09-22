@@ -122,7 +122,8 @@ Planitum
 ```
 card M-PLA-CB UAH
 limit unknown
-grace-period first 100 days then 60 days
+grace duration range number 1 -> 100
+                               _ 60 days
 penalty daily 100
         month add-rate 5%
 currency convert 1%

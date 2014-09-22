@@ -1,0 +1,5 @@
+
+program 'moneybox'
+deposit transaction move round 1 of amount to account '/users/:client/moneybox'
+        final move 1% to '/users/:client/moneybox'
+
