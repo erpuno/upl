@@ -1,0 +1,29 @@
+
+      Financial Contracts Papers:
+
+ [1]. SPJ, Jean-Marc Eber, Julian Seward.
+      Composing contracts: an adventure in financial engineering.
+      Mictosoft, LexiFi, Univesity of Glasgow.
+
+ [2]. Anupam Mediratta.
+      A generic domain specific language for financial contracts.
+      Implementation of Credit Default Swap and Power Reverse Dual Currency Swap using
+      Contact Language proposed bu SPJ.
+      The State University of New Jersey.
+
+ [3]. MLFi.
+      White Paper: http://lexifi.com/files/resources/MLFiWhitePaper.pdf
+      Presentation: http://www.lexifi.com/files/resources/MLFiPresentation.ppt
+
+ [4]. Tomas Petricek.
+      F# in Financial Domain:
+      https://skillsmatter.com/skillscasts/3213-fsharp-finance
+
+      DSL:
+
+ [1]. Debasish Ghosh.
+      DSLs in Action.
+
+ [2]. Live Insurance and Pensions
+      http://itu.dk/people/drc/pubs/ica2014.pdf
+
