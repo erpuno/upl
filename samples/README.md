@@ -9,7 +9,7 @@ Sample Card and Deposit programs for operations and billing purposes.
 Instruments
 -----------
 
-Trade Processing for invest banking.
+Trade Processing for investment banking.
 
 Credits
 -------
