@@ -2,14 +2,11 @@
 % Card Processing Language
 % Copyright (c) 2014 Synrc Research Center s.r.o.
 
-% Program Sections:  limit grace credit rate deposit accounts version
-% Deposit Rules:     duration withdraw charge auto fee final
-% Credit Rules:      transaction status
-% Transaction Rules: cashin cashout wire
-
 Nonterminals Card Rules Rule Currency Amount CreditRules CreditRulesBody CreditRule
              TransRules Limit AmountType ChargeRule DepositRule DepositRules
-             Enabled AccountList Name DurationList Account Periodically ChargeRuleLimit.
+             Enabled AccountList Name DurationList Account Periodically ChargeRuleLimit
+             TargetRule AmountRange CashoutRule CashoutRules CountryRange
+             TargetCase.
 
 Terminals id_ int_ long_ double_ float_ percent_ atom_ str1_ str2_
           auto final from move to version include
@@ -22,11 +19,11 @@ Terminals id_ int_ long_ double_ float_ percent_ atom_ str1_ str2_
           target local type name
           amount debt credit debit status of
           and or not xor min max disabled enabled
-	      '->' '::' '\\' '=>'
+	      '+' '-' '*' '/' '->' '..' '_'
+	      '::' '\\' '=>'
 	      ';' '.' ',' '[' '|' ']' '{' '}' '='
 	      '<<' '>>' '@' '(' ')'
 	      '<' '<=' '>' '>=' '==' '/='
-	      '+' '-' '*' '/'
 	      '+.' '-.' '*.' '/.'
 	      docstr_.
 
@@ -45,6 +42,7 @@ Rule -> limit    Amount       : {limit,'$2'}.
 Rule -> include  str1_        : upl:process(val('$2')).
 Rule -> grace    Amount days  : {grace,'$2'}.
 Rule -> credit   CreditRules  : {credit,'$2'}.
+Rule -> penalty  Periodically : {penalty,'$2'}.
 Rule -> rate     ChargeRule   : {rate,'$2'}.
 Rule -> rate     CreditRulesBody  : {rate,'$2'}.
 Rule -> version  Amount       : {version,'$2'}.
@@ -52,18 +50,21 @@ Rule -> deposit  DepositRules : {deposit,'$2'}.
 Rule -> accounts AccountList  : {accounts,'$2'}.
 
 Amount -> unknown  : unknown.
-Amount -> int_     : {int,val('$1')}.
-Amount -> percent_ : {percent,val('$1')}.
+Amount -> debt     : {keyword,debt}.
+Amount -> '_'      : {keyword,'_'}.
+Amount -> int_     : {fixed,val('$1')}.
+Amount -> float_   : {fixed,val('$1')}.
+Amount -> percent_ : {percent,'$1'}.
+Amount -> int_ '+' percent_    : {fixed,val('$1'),percent,val('$3')}.
 
 DepositRules -> '$empty' : [].
 DepositRules -> DepositRule DepositRules : ['$1'|'$2'].
 
 CreditRules -> '$empty' : undefined.
 CreditRules -> CreditRulesBody : '$1'.
-
 CreditRulesBody -> CreditRule CreditRules : ['$1'|'$2'].
 
-ChargeRuleLimit -> Amount : {charge,'$1'}.
+ChargeRuleLimit -> Amount Limit : {charge,'$1','$2'}.
 ChargeRuleLimit -> Amount of AmountType Limit : {charge,'$3','$1','$4'}.
 ChargeRuleLimit -> Limit : '$1'.
 
@@ -78,6 +79,7 @@ AccountList -> Account AccountList : ['$1'|'$2'].
 
 Account -> credit  str1_ : {credit,val('$2')}.
 Account -> rate    str1_ : {rate,val('$2')}.
+Account -> penalty str1_ : {penalty,val('$2')}.
 Account -> deposit str1_ : {deposit,val('$2')}.
 
 Periodically -> monthly Amount '->' ChargeRule : {monthly,'$2','$4'}.
@@ -87,7 +89,7 @@ Periodically -> annual ChargeRule              : {annual,'$2'}.
 
 DepositRule -> duration Periodically        : {duration,['$2']}.
 DepositRule -> duration range DurationList  : {duration,'$3'}.
-DepositRule -> withdraw Enabled             : begin io:format("withdraw~n"), {withdraw,'$2'} end.
+DepositRule -> withdraw Enabled             : {withdraw,'$2'}.
 DepositRule -> charge Enabled               : {charge,'$2',none}.
 DepositRule -> charge Enabled Periodically  : {charge,'$2','$3'}.
 DepositRule -> auto                         : {auto}.
@@ -95,16 +97,38 @@ DepositRule -> final move from id_ to id_   : {final,move,'$4','$6'}.
 DepositRule -> fee ChargeRule               : '$1'.
 DepositRule -> Periodically                 : '$1'.
 
-
 CreditRule -> transaction TransRules : {transaction,'$2'}.
 CreditRule -> status Enabled Amount  : {status,'$2','$3'}.
 CreditRule -> Periodically           : '$1'.
 
-
 TransRules -> '$empty' : [].
-TransRules -> cashin  Amount     TransRules : [{cashin,'$2'}|'$3'].
-TransRules -> wire    ChargeRule TransRules : [{wire,'$2'}|'$3'].
-TransRules -> cashout Amount     TransRules : [{cashout,'$2'}|'$3'].
+TransRules -> cashin CashoutRules TransRules     : [{cashin,'$2'}|'$3'].
+TransRules -> cashout CashoutRules TransRules    : [{cashout,'$2'}|'$3'].
+TransRules -> wire ChargeRule TransRules        : [{wire,'$2'}|'$3'].
+TransRules -> wire target TargetRule ChargeRule TransRules : [{wire,'$3','$4'}|'$5'].
+
+CashoutRules -> '$empty' : [].
+CashoutRules -> CashoutRule CashoutRules : ['$1'|'$2'].
+
+CashoutRule -> pos id_ Amount             : {pos,'$2','$3'}.
+CashoutRule -> country range CountryRange : {country,{range,'$3'}}.
+CashoutRule -> country id_ Amount         : {country,'$2','$3'}.
+CashoutRule -> amount range AmountRange   : {range,'$3'}.
+CashoutRule -> Amount                     : '$1'.
+
+CountryRange -> '$empty' : [].
+CountryRange -> unknown '->' Amount CountryRange : [{unknown,'$3'}|'$4'].
+CountryRange -> id_ '->' Amount CountryRange : [{'$1','$3'}|'$4'].
+
+AmountRange -> '$empty' : [].
+AmountRange -> Amount '..' Amount '->' Amount AmountRange : [{'$1','$3','$4'}|'$5'].
+
+TargetRule -> TargetCase : {target,'$1'}.
+TargetRule -> TargetCase type str1_ : {target,'$1',type,'$3'}.
+
+TargetCase -> local : local.
+TargetCase -> unknown : unknown.
+TargetCase -> str1_ : '$1'.
 
 DurationList -> '$empty' : [].
 DurationList -> Periodically DurationList : ['$1'|'$2'].

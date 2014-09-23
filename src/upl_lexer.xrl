@@ -11,13 +11,11 @@ WS		= ([\000-\s]|--.*)
 
 Rules.
 
-{D}+     : {token,{int_,to_integer(TokenChars),TokenLine}}.
-{D}+[lL] : {token,{long_,to_integer(TokenChars),TokenLine}}.
-
-{D}+\.{D}+([eE]-?{D}+)?            : {token,{double_,to_float(TokenChars),TokenLine}}.
-{D}+\.{D}+([eE]-?{D}+)?[fF]        : {token,{float_,to_float(TokenChars),TokenLine}}.
-{D}+\.{D}+%                        : {token,{percent_,to_float(TokenChars)/100,TokenLine}}.
-{D}++%                             : {token,{percent_,to_integer(TokenChars)/100,TokenLine}}.
+{D}+                     : {token,{int_,to_integer(TokenChars),TokenLine}}.
+{D}+[lL]                 : {token,{long_,to_integer(TokenChars),TokenLine}}.
+{D}+\.{D}+([eE]-?{D}+)?  : {token,{float_,to_float(TokenChars),TokenLine}}.
+{D}+\.{D}+%              : {token,{percent_,to_float(TokenChars)/100,TokenLine}}.
+{D}++%                   : {token,{percent_,to_integer(TokenChars)/100,TokenLine}}.
 
 (program|limit|grace|accounts)        : {token,{list_to_atom(TokenChars),TokenLine}}.
 (rate|penalty|fee|deposit)         : {token,{list_to_atom(TokenChars),TokenLine}}.
@@ -41,7 +39,7 @@ Rules.
 '(\\.|[^'])*' : {token,{str1_,unquote(TokenChars),TokenLine}}.
 
 (->|=>|<<|>>|::|\+\.|-\.) : {token,{list_to_atom(TokenChars),TokenLine}}.
-(\*\.|/\.|<=|>=|==|/=)    : {token,{list_to_atom(TokenChars),TokenLine}}.
+(\*\.|/\.|<=|>=|==|/=|\.\.|\_) : {token,{list_to_atom(TokenChars),TokenLine}}.
 
 [.;,[|\]{}=<>@()\\] : {token,{list_to_atom(TokenChars),TokenLine}}.
 """(x|[^x])*"""     : {token,{docstr_,unquote3(TokenChars),TokenLine}}.
