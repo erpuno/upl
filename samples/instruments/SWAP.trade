@@ -1,7 +1,8 @@
 —- Interest Rate Swap Trade
 —- ird-ex02-stub-amort-swap.xml
 
-instrument 'Stub_Amort_Swap'
+instrument 'Stub_Amort_Swap' type Swap
+
 parties name DB id PARTYAUS33 trade DB-0001
         name Barclays id BARCGB2L trade SW2000
 
@@ -30,6 +31,8 @@ stream pay DB rate 6% annual of
        calendar DEFR
        fraction '30E/360'
 
-amend "/trades/:trade" with notional 100500$
-confirm "/trades/:trade"
-allocate trade "/trades/:trade" for notional 10M + 30M + 10M for DB to UBS, Barclays, City
+-- Message definitions:
+new "Stub_Amort_Swap"
+amend "Stub_Amort_Swap" with notional 100500$
+confirm "Stub_Amort_Swap"
+allocate trade "Stub_Amort_Swap" for notional 10M + 30M + 10M for DB to UBS, Barclays, City
