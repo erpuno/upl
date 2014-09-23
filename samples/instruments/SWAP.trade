@@ -36,3 +36,4 @@ new "Stub_Amort_Swap"
 amend "Stub_Amort_Swap" with notional 100500$
 confirm "Stub_Amort_Swap"
 allocate trade "Stub_Amort_Swap" for notional 10M + 30M + 10M for DB to UBS, Barclays, City
+clear trade "Stub_Amort_Swap" with house LCH
