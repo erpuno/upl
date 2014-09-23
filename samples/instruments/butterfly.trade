@@ -3,37 +3,42 @@
 
 -- any of inner trade definitions like "premium is" is movable out of trade to the strategy level
 -- strategy level definitions have lower priority than instrument level
--- "type" - marks definition (message, instrument, strategy) for type check (like xsi:type)
+-- "is"(after definition) - marks definition (message, instrument, strategy) for type check (like xsi:type)
 -- "of" - generic type constructor (binary)
 -- "is" - algebraic type constructor (unary)
--- "type"(in start of string) - define type alias using type constructors: type OptionButterfly is Batterfly of Option
+-- "is"(after name) - define new type using type constructors: 'OptionButterfly' is Batterfly of Option
 -- "Option" - predefined type
 
-new "Equity Butterfly" type RequestConfirmation -- event message for confirmation process
+-- "new" means same as <trade> in FpMl
+-- "request for confirmation" means same as <requestConfirmation> in FpMl
+new "Equity Butterfly" is request for confirmation -- event message for confirmation process
 
-type Equity Option is Option
+'Equity Option' is Option -- just type definition
 
-strategy 'Equity Butterfly' type Butterfly of Option
+strategy 'Equity Butterfly' is Butterfly of Option
 
 parties name DB id PartyA
         name NEDB id PartyB
 
-instrument '.SSMI' type Equity Option
+instrument '.SSMI' is Equity Option
 exercise at 12/19/2004 automatic
-
-  strike is 8700 CHF
-  number of options is 2500
-  option entittlement is 1.0
-  premium is 300000 CHF from DB to NEDB at 06/09/2001
+  2000 options with strike 8000CHF
+  with one underlyer
+  pay premium 300000 CHF from DB to NEDB at 06/09/2001
 
 instrument '.SSMI'
-exercise at 12/20/2004 automatic
-
-  strike is 100700 CHF
-  number of options is 3000
-  option entittlement is 1.0
-  premium is 200000 CHF from DB to NEDB at 06/09/2001
+exercise at 12/19/2004 automatic
+  1000 options with strike 10000CHF
+  with one underlyer
+  pay premium 200000 CHF from DB to NEDB at 06/09/2001
   if index was modified - "cancel and pay"
+  
+instrument '.SSMI'  
+exercise at 12/19/2004 automatic
+  1000 options with strike 6000CHF
+  with one underlyer
+  pay premium 200000 CHF from DB to NEDB at 06/09/2001
+   
 
 expire at OSP
 settle in 2 business days after OSP with CHF Cash
@@ -45,13 +50,13 @@ if index was
   cancelled - "cancel and pay"
   disrupted - "adjust by agent"
 
-index may be disrupted in result of changeInLaw, failureToDeliver, hedgingDisruption, lossOfStockBorrow
+index may be disrupted because of changeInLaw, failureToDeliver, hedgingDisruption, lossOfStockBorrow
 which may be represented by nonReliance, agreementsRegardingHedging, indexDisclaimer, additionalAcknowledgements
 
 exchange XNYS
 gouverningLaw GBEN
-master documentation is ISDA, 2002
-contractual definitions ISDA2000
+master documentation: ISDA, 2002
+contractual definitions: ISDA2000
   
 -- Notes:
 -- lexems: is, strike, number of options, option entittlement, premium, exchange, expire at, settle in, obtain price from, adjust by, if index was etc.

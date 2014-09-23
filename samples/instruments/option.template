@@ -1,0 +1,20 @@
+-- this file contains templates for instrument's fields and actions definitions 
+-- may be used to generate (in compile time) subparsers based on very simplified template-like grammar
+-- grammars may be concatenated with each other when constructing new type, like traits: Expiring Option is Option is Expiring - parser will try to match lines from every grammar
+-- every element and line is non-mandatory and repeatable by default
+-- also highlighting files could be generated using this template
+
+-- expected grammar for Option type
+instrument {name: String} is Option
+exercise at {exerciseDate: Date} {$automatic: String}
+  {optionsCount: Count} options with strike {strike: Money}
+  with {count: Count} underlyer
+  pay premium {premium: Money} from {partyFrom: Party} to {partyTo: Party} at {premiumDate: Date}
+  
+-- expected grammar for Expiring type  
+instrument {name: String} is Expiring Option
+  expire at {e: Enum{OSP, Open, Close}}
+  
+-- expected grammar for Swap type
+instrument {name: String} is Swap
+  stream {period: Period} with notional {notional: NotionalParser}
