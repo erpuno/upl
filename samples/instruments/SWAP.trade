@@ -11,7 +11,7 @@ stream pay Barclays rate 'EUR-LIBOR-BBA' monthly 6 of
                       12/14/1996 30000000
                       12/14/1997 20000000
                       12/14/1998 10000000
-       from 01/16/1995 to 12/14/1999 adjust MODFOLLOWING
+       from 01/16/1995 to 12/14/1999 adjust NONE, MODFOLLOWING
        starting 06/14/1995
        recalculate monthly 6 roll 14
        reset 2 business days before monthly 6 adjust MODFOLLOWING
