@@ -24,9 +24,16 @@ context default
     keyword whole annual yellow
     keyword whole convert yellow
     keyword whole status yellow
+    keyword whole event yellow
+    keyword whole form yellow
 
 # Constructors
 
+    keyword whole programs white
+    keyword whole user white
+    keyword whole auth white
+    keyword whole per white
+    keyword whole day white
     keyword whole account white
     keyword whole on white
     keyword whole to white
@@ -42,7 +49,16 @@ context default
     keyword whole grace white
     keyword whole rate white
     keyword whole penalty white
-    keyword whole card white
+    keyword whole program white
+    keyword whole include white
+    keyword whole prepare white
+    keyword whole document white
+    keyword whole age white
+    keyword whole phone white
+    keyword whole commit white
+    keyword whole match white
+    keyword whole success white
+    keyword whole failure white
     keyword whole limit white
     keyword whole max white
     keyword whole min white
@@ -56,6 +72,26 @@ context default
     keyword whole pos white
     keyword whole country white
     keyword whole auto white
+
+# Trades
+
+    keyword whole instrument white
+    keyword whole id white
+    keyword whole parties white
+    keyword whole trade white
+    keyword whole amend white
+    keyword whole confirm white
+    keyword whole allocate white
+    keyword whole notional white
+    keyword whole roll white
+    keyword whole fraction white
+    keyword whole pay white
+    keyword whole stream white
+    keyword whole adjust white
+    keyword whole calendar white
+    keyword whole recalculate white
+    keyword whole init white
+
 
 # Simple
 
