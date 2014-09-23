@@ -29,7 +29,7 @@ Rules.
 (and|or|not|xor|status|of)         : {token,{list_to_atom(TokenChars),TokenLine}}.
 (disabled|enabled|false|true)      : {token,{list_to_atom(TokenChars),TokenLine}}.
 (on|off|min|max|unknown)           : {token,{list_to_atom(TokenChars),TokenLine}}.
-(version)           : {token,{list_to_atom(TokenChars),TokenLine}}.
+(version|include)                  : {token,{list_to_atom(TokenChars),TokenLine}}.
 (duration|charge|withdraw|range)   : {token,{list_to_atom(TokenChars),TokenLine}}.
 (auto|days|final|from|move|to)          : {token,{list_to_atom(TokenChars),TokenLine}}.
 

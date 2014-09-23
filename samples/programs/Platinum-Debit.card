@@ -6,8 +6,11 @@
 --      $ upl samples/Platinum-Debit.card
 
 program PLA_DEB USD limit 0
-credit transaction wire 50 of debt limit max 10 min 1
+credit
+       monthly 20% of amount
+       transaction wire 50 of debt limit max 10 min 1
                    cashin 50
                    cashout 1
                    wire 50 of credit
-       monthly 10%
+  
+

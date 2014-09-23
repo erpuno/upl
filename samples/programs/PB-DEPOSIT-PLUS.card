@@ -4,18 +4,18 @@
 -- account: "JNDI/LDAP/REST address"
 
 program Deposit_Plus UAH
-include 'PB-CASHBACK'
+-- include 'PB-CASHBACK.card'
+include 'Platinum-Debit.card'
 version 1
 deposit duration range monthly 1 -> 20%
                        monthly 3 -> 22%
-                       monthly 6 -> 22% of amount 
-                                        to account 'users/:client/rate'
-                       annual 23% of amount
+                       monthly 6 -> 22%
+                       annual 23%
         withdraw disabled
         auto
         charge enabled monthly limit max 20000
         monthly 1% of amount to account 'bonus' -- '/users/:client/bonus'
 --        final move from rate to deposit
-        monthly 15% name 'tax' of deposit to account 'users/:client/tax'
+--        monthly 15% name 'tax' of deposit to account 'users/:client/tax'
 accounts deposit 'users/:client/deposit'
          rate 'users/:client/rate'

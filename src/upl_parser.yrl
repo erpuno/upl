@@ -7,12 +7,12 @@
 % Credit Rules:      transaction status
 % Transaction Rules: cashin cashout wire
 
-Nonterminals Card Rules Rule Currency Amount CreditRules CreditRule
+Nonterminals Card Rules Rule Currency Amount CreditRules CreditRulesBody CreditRule
              TransRules Limit AmountType ChargeRule DepositRule DepositRules
              Enabled AccountList Name DurationList Account Periodically ChargeRuleLimit.
 
 Terminals id_ int_ long_ double_ float_ percent_ atom_ str1_ str2_
-          auto final from move to version
+          auto final from move to version include
           days withdraw charge duration range
           program limit grace accounts account
           rate penalty fee deposit unknown
@@ -42,10 +42,11 @@ Rules -> Rule Rules : ['$1'|'$2'].
 
 
 Rule -> limit    Amount       : {limit,'$2'}.
+Rule -> include  str1_        : upl:process(val('$2')).
 Rule -> grace    Amount days  : {grace,'$2'}.
 Rule -> credit   CreditRules  : {credit,'$2'}.
 Rule -> rate     ChargeRule   : {rate,'$2'}.
-Rule -> rate     CreditRules  : {rate,'$2'}.
+Rule -> rate     CreditRulesBody  : {rate,'$2'}.
 Rule -> version  Amount       : {version,'$2'}.
 Rule -> deposit  DepositRules : {deposit,'$2'}.
 Rule -> accounts AccountList  : {accounts,'$2'}.
@@ -57,8 +58,10 @@ Amount -> percent_ : {percent,val('$1')}.
 DepositRules -> '$empty' : [].
 DepositRules -> DepositRule DepositRules : ['$1'|'$2'].
 
-CreditRules -> '$empty' : [].
-CreditRules -> CreditRule CreditRules : ['$1'|'$2'].
+CreditRules -> '$empty' : undefined.
+CreditRules -> CreditRulesBody : '$1'.
+
+CreditRulesBody -> CreditRule CreditRules : ['$1'|'$2'].
 
 ChargeRuleLimit -> Amount : {charge,'$1'}.
 ChargeRuleLimit -> Amount of AmountType Limit : {charge,'$3','$1','$4'}.
