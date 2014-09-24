@@ -22,7 +22,7 @@ tokenize(Source) ->
 parse(Tokens) ->
     io:format("Tokens: ~p~n",[Tokens]),
 	case upl_parser:parse(Tokens) of
-	     {ok,Card} -> compile(Card), Card;
+	     {ok,Card} -> compile(Card), {ok,Card};
 	             E -> io:format("Error ~p",[E]) end.
 
 compile(Card) -> io:format("Card ~80p~n",[Card]).
