@@ -1,0 +1,9 @@
+{application, upl, [
+    {description,  "UPL Processing Language"},
+    {vsn,          "0.10"},
+    {applications, [kernel, stdlib]},
+    {modules, []},
+    {registered,   []},
+    {mod, { upl_app, []}},
+    {env, []}
+]}.
