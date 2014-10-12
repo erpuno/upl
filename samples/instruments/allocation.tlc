@@ -1,0 +1,61 @@
+-- describes business processes
+
+-- "if" checks (by pattern matching) received message from external system
+-- "spawn" is sending message generated from recieved and maybe previous message(s)
+-- actor may need internal state to check previous status (cache may be used, because some trade details non mentioned in the message)
+-- actors may be spawned by correlationId (tradeId) - each req/resp in separate transaction
+-- notifications (see below) are usually implemented as database or client state update
+-- messages with old buisiness versions are ignored after amend/termination/cancel
+
+
+-- block trade - trade wich may be allocated
+
+process block
+
+start with unconfirmed
+from unconfirmed to confirmation if request confirmation - spawn request confirmation --broadcast to participants
+from * to * and risk calculated - spawn risk notification
+from confirmation to confirmed if confirmation agreed - spawn confirmation notification
+from confirmed or confirmation to allocating if allocation requested - allocate, 
+     for every allocation spawn request confirmation and corellate blockTradeId and link to the parent by blockTradeId
+from * to terminated if termination - spawn termination notification
+from * to cancelled if cancel - spawn cancel notification
+from * to * if amend with clearing details or amend with non-cleared - spawn clearing notification
+from * to unconfirmed if amend - spawn amend notification, spawn request confirmation
+
+
+-- describes group behaviour of allocations in distributed transaction (second phase of commit will terminate block if succeed)
+-- implementation may use both: 
+--   correlationId - individual alloc id for request/response
+--   parentCorrelationId  - id received from parent to check state of the group
+-- "all" and "some" are predicates which use accumulated actor state; such actor is spawned by parentCorrelationId (blockTradeId)
+-- "when" condition is used by all predicate
+
+process allocations
+corellated by blockTradeId when sum(notional) == parent notional
+
+start with confirmation
+from confirmation to partially confirmed if some confirmations agreed - spawn confirmation status
+from confirmation or partially confirmed to allocations confirmed if all confirmations agreed - terminate block
+from confirmation to expired if not all confirmations agreed during timeout - spawn allocations expired notification
+from confirmation to cancelled if some confirmations disputed - spawn cancel notification, cancel block
+from allocations confirmed to confirmed - spawn confirmation notification
+
+-- describes clearing confirmation
+-- this process may be applied for both block and allocations in any state
+
+process *
+start with *
+from * to * and clearing if confirmation agreed and match eligible for clearing - spawn request clearing
+from clearing to expired if not clearing confirmed during timeout - spawn clearing expired notification
+from clearing to cleared if clearing confirmed - spawn clearing notification with status confirmed, spawn amend with clearing details
+from clearing to non cleared if clearing disputed - spawn clearing notification with status disputed, spawn amend with non-cleared status
+from clearing to * if terminate or cancel or amend
+
+-- auto-matching
+
+process trader and sales version matching
+correlated by (notional == notional with tolerance 10 && parties == parties reverse) when count == 2
+
+start with unconfirmed
+from unconfirmed to confirmed if all request confirmations and risk accepted - spawn confirmation agreed
