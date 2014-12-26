@@ -1,0 +1,265 @@
+# Author: Maxim Sokhatsky <maxim@synrc.com>
+# Date: 1 Nov 2014
+
+context default
+    keyword whole after brown
+    keyword whole and brown
+    keyword whole andalso brown
+    keyword whole band brown
+    keyword whole begin brown
+    keyword whole bnot brown
+    keyword whole bor brown
+    keyword whole bsl brown
+    keyword whole bsr brown
+    keyword whole bxor brown
+    keyword whole case brown
+    keyword whole catch brown
+    keyword whole cond brown
+    keyword whole div brown
+    keyword whole end brown
+    keyword whole fun brown
+    keyword whole if brown
+    keyword whole let brown
+    keyword whole not brown
+    keyword whole of brown
+    keyword whole or brown
+    keyword whole orelse brown
+    keyword whole query brown
+    keyword whole receive brown
+    keyword whole rem brown
+    keyword whole try brown
+    keyword whole throw brown
+    keyword whole xor brown
+    keyword whole when brown
+
+    keyword whole -module brightmagenta
+    keyword whole -compile brightmagenta
+    keyword whole -behaviour brightmagenta
+    keyword whole -record brightmagenta
+    keyword whole -define brightmagenta
+    keyword whole -include brightmagenta
+    keyword whole -include_lib brightmagenta
+    keyword whole -export brightmagenta
+    keyword whole -vsn magenta
+    keyword whole -author magenta
+    keyword whole -copyright magenta
+    keyword whole -\{abcdefghijklmnoprqstuvwxyz\}\[abcdefghijklmnoprqstuvwxyzABCDEFGHIJKLMNOPRQSTVWXYZ0123456789_\] magenta
+
+# erlang:*
+    keyword whole abs brightgreen
+    keyword whole accept brightgreen
+    keyword whole alarm brightgreen
+    keyword whole apply brightgreen
+    keyword whole atom_to_list brightgreen
+    keyword whole binary_to_list brightgreen
+    keyword whole binary_to_term brightgreen
+    keyword whole check_process_code brightgreen
+    keyword whole concat_binary brightgreen
+    keyword whole date brightgreen
+    keyword whole delete_module brightgreen
+    keyword whole disconnect_node brightgreen
+    keyword whole element brightgreen
+    keyword whole erase brightgreen
+    keyword whole exit brightgreen
+    keyword whole float brightgreen
+    keyword whole float_to_list brightgreen
+    keyword whole garbage_collect brightgreen
+    keyword whole get brightgreen
+    keyword whole get_keys brightgreen
+    keyword whole group_leader brightgreen
+    keyword whole halt brightgreen
+    keyword whole hd brightgreen
+    keyword whole integer_to_list brightgreen
+    keyword whole is_alive brightgreen
+    keyword whole is_atom brightgreen
+    keyword whole is_binary brightgreen
+    keyword whole is_boolean brightgreen
+    keyword whole is_float brightgreen
+    keyword whole is_function brightgreen
+    keyword whole is_integer brightgreen
+    keyword whole is_list brightgreen
+    keyword whole is_number brightgreen
+    keyword whole is_pid brightgreen
+    keyword whole is_port brightgreen
+    keyword whole is_process_alive brightgreen
+    keyword whole is_record brightgreen
+    keyword whole is_reference brightgreen
+    keyword whole is_tuple brightgreen
+    keyword whole length brightgreen
+#    keyword whole link brightgreen
+    keyword whole list_to_atom brightgreen
+    keyword whole list_to_binary brightgreen
+    keyword whole list_to_float brightgreen
+    keyword whole list_to_integer brightgreen
+    keyword whole list_to_pid brightgreen
+    keyword whole list_to_tuple brightgreen
+    keyword whole load_module brightgreen
+    keyword whole loaded brightgreen
+    keyword whole localtime brightgreen
+    keyword whole make_ref brightgreen
+    keyword whole module_loaded brightgreen
+    keyword whole function_exported brightgreen
+    keyword whole node brightgreen
+    keyword whole nodes brightgreen
+    keyword whole now brightgreen
+    keyword whole open_port brightgreen
+    keyword whole pid_to_list brightgreen
+    keyword whole port_close brightgreen
+    keyword whole port_command brightgreen
+    keyword whole port_connect brightgreen
+    keyword whole port_control brightgreen
+    keyword whole ports brightgreen
+    keyword whole pre_loaded brightgreen
+    keyword whole process_flag brightgreen
+    keyword whole process_info brightgreen
+    keyword whole processes brightgreen
+    keyword whole purge_module brightgreen
+    keyword whole put brightgreen
+    keyword whole register brightgreen
+    keyword whole registered brightgreen
+    keyword whole round brightgreen
+    keyword whole self brightgreen
+    keyword whole setelement brightgreen
+    keyword whole size brightgreen
+    keyword whole spawn brightgreen
+    keyword whole spawn_link brightgreen
+    keyword whole spawn_opt brightgreen
+    keyword whole split_binary brightgreen
+    keyword whole statistics brightgreen
+    keyword whole term_to_binary brightgreen
+    keyword whole throw brightgreen
+    keyword whole time brightgreen
+    keyword whole tl brightgreen
+    keyword whole trunc brightgreen
+    keyword whole tuple_to_list brightgreen
+    keyword whole unlink brightgreen
+    keyword whole unregister brightgreen
+    keyword whole whereis brightgreen
+
+    keyword whole gen_server:cast brightgreen
+    keyword whole gen_server:call brightgreen
+    keyword whole gen_server:reply brightgreen
+    keyword whole gen_server:start_link brightgreen
+    keyword whole gen_server:start brightgreen
+    keyword whole io:format brightgreen
+
+    keyword whole start_link brightcyan
+    keyword whole init brightcyan
+    keyword whole handle_cast brightcyan
+    keyword whole handle_call brightcyan
+    keyword whole handle_info brightcyan
+    keyword whole handle_event brightcyan
+    keyword whole handle_sync_event brightcyan
+    keyword whole terminate brightcyan
+    keyword whole code_change brightcyan
+
+
+# list comprehension
+    keyword <- brown
+# clause
+    keyword -> brown
+# guards
+    keyword =:= brown
+    keyword == brown
+    keyword /= brown
+    keyword =/= brown
+# binary
+    keyword << cyan
+    keyword >> cyan
+# guards
+    keyword < brown
+    keyword =< brown
+    keyword >= brown
+    keyword > brown
+# ops
+    keyword - brown
+    keyword \+ brown
+    keyword / brown
+    keyword \* brown
+
+    keyword ; cyan
+    keyword , cyan
+    keyword . cyan
+    keyword = brown
+    keyword % brown
+
+    keyword \+\+ brown
+    keyword -- brown
+    keyword ! brown
+    keyword $\{abcdefghijklmnoprqstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789_{}[]()(\\/`~!@$%^&\*+-=;:'"|,./?<>\} red
+    keyword $\ red
+
+    keyword whole ?MODULE cyan
+    keyword whole ?LINE cyan
+    keyword whole ?FILE cyan
+    keyword whole ?\[abcdefghijklmnoprqstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789_@\] red
+    keyword whole #\[abcdefghijklmnoprqstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789_@\] brightmagenta
+    keyword whole true red
+    keyword whole false red
+
+    keyword [ cyan
+    keyword || cyan
+    keyword | cyan
+    keyword ] cyan
+    keyword ( cyan
+    keyword ) cyan
+    keyword { cyan
+    keyword } cyan
+
+    keyword whole wf:session cyan
+    keyword whole wf:update cyan
+    keyword whole wf:f cyan
+    keyword whole wf:to_integer cyan
+    keyword whole wf:to_atom cyan
+    keyword whole wf:atom cyan
+    keyword whole wf:to_list cyan
+    keyword whole wf:info cyan
+    keyword whole wf:wire cyan
+    keyword whole wf:q cyan
+    keyword whole wf:reg cyan
+    keyword whole wf:clear_session cyan
+    keyword whole bpe:amend cyan
+    keyword whole bpe:process cyan
+    keyword whole bpe:doc cyan
+    keyword whole bpe:events cyan
+    keyword whole bpe:complete cyan
+    keyword whole kvs:get cyan
+    keyword whole kvs:put cyan
+    keyword whole kvs:add cyan
+    keyword whole kvs:remove cyan
+
+# todo: no more than one dot in atom, and not at the end
+    keyword whole \{abcdefghijklmnoprqstuvwxyz\}\[abcdefghijklmnoprqstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789_.@\] gray
+    keyword whole \{_ABCDEFGHIJKLMNOPRQSTUVWXYZ\}\[abcdefghijklmnoprqstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789_@\] lightgray
+    
+context exclusive % \n brown
+    spellcheck
+
+
+context " " green
+    spellcheck
+    keyword ~p brightgreen
+    keyword ~n brightgreen
+    keyword ~w brightgreen
+    keyword ~~ brightgreen
+    keyword \\" brightgreen
+    keyword \\\{0123\}\{01234567\}\{01234567\} brightgreen
+    keyword \\\{01234567\}\{01234567\} brightgreen
+    keyword \\\{01234567\} brightgreen
+    keyword \\x\{0123456789abcdefABCDEF\}\{0123456789abcdefABCDEF\} brightgreen
+    keyword \\\\ brightgreen
+    keyword \\' brightgreen
+    keyword \\\{bdefrstv\} brightgreen
+    keyword \\^\{abcdefghijklmnoprqstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ\} brightgreen
+
+context ' ' brightred
+    keyword \\" brightred
+    keyword \\\{0123\}\{01234567\}\{01234567\} brightred
+    keyword \\\{01234567\}\{01234567\} brightred
+    keyword \\\{01234567\} brightred
+    keyword \\x\{0123456789abcdefABCDEF\}\{0123456789abcdefABCDEF\} brightred
+    keyword \\\\ brightred
+    keyword \\' brightred
+    keyword \\\{bdefrstv\} brightred
+    keyword \\^\{abcdefghijklmnoprqstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ\} brightred
+

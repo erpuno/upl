@@ -9,88 +9,88 @@ context default
 
 # Deposit
 
-    keyword whole amount yellow
-    keyword whole debt yellow
-    keyword whole withdraw yellow
-    keyword whole charge yellow
-    keyword whole duration yellow
-    keyword whole final yellow
+    keyword whole amount brown
+    keyword whole debt brown
+    keyword whole withdraw brown
+    keyword whole charge brown
+    keyword whole duration brown
+    keyword whole final brown
 
 # Credit
 
-    keyword whole transaction yellow
-    keyword whole monthly yellow
-    keyword whole daily yellow
-    keyword whole annual yellow
-    keyword whole convert yellow
-    keyword whole status yellow
-    keyword whole event yellow
-    keyword whole form yellow
+    keyword whole transaction brown
+    keyword whole monthly brown
+    keyword whole daily brown
+    keyword whole annual brown
+    keyword whole convert brown
+    keyword whole status brown
+    keyword whole event brown
+    keyword whole form brown
 
 # Constructors
 
-    keyword whole programs white
-    keyword whole user white
-    keyword whole auth white
-    keyword whole per white
-    keyword whole day white
-    keyword whole account white
-    keyword whole on white
-    keyword whole to white
-    keyword whole version white
-    keyword whole name white
-    keyword whole from white
-    keyword whole move white
-    keyword whole credit white
-    keyword whole deposit white
-    keyword whole currency white
-    keyword whole range white
-    keyword whole fee white
-    keyword whole grace white
-    keyword whole rate white
-    keyword whole penalty white
-    keyword whole program white
-    keyword whole include white
-    keyword whole prepare white
-    keyword whole document white
-    keyword whole age white
-    keyword whole phone white
-    keyword whole commit white
-    keyword whole match white
-    keyword whole success white
-    keyword whole failure white
-    keyword whole limit white
-    keyword whole max white
-    keyword whole min white
-    keyword whole of white
-    keyword whole or white
-    keyword whole days white
-    keyword whole target white
-    keyword whole source white
-    keyword whole local white
-    keyword whole type white
-    keyword whole pos white
-    keyword whole country white
-    keyword whole auto white
+    keyword whole programs brightmagenta
+    keyword whole user brightmagenta
+    keyword whole auth brightmagenta
+    keyword whole per brightmagenta
+    keyword whole day brightmagenta
+    keyword whole account brightmagenta
+    keyword whole on brightmagenta
+    keyword whole to brightmagenta
+    keyword whole version brightmagenta
+    keyword whole name brightmagenta
+    keyword whole from brightmagenta
+    keyword whole move brightmagenta
+    keyword whole credit brightmagenta
+    keyword whole deposit brightmagenta
+    keyword whole currency brightmagenta
+    keyword whole range brightmagenta
+    keyword whole fee brightmagenta
+    keyword whole grace brightmagenta
+    keyword whole rate brightmagenta
+    keyword whole penalty brightmagenta
+    keyword whole program brightmagenta
+    keyword whole include brightmagenta
+    keyword whole prepare brightmagenta
+    keyword whole document brightmagenta
+    keyword whole age brightmagenta
+    keyword whole phone brightmagenta
+    keyword whole commit brightmagenta
+    keyword whole match brightmagenta
+    keyword whole success brightmagenta
+    keyword whole failure brightmagenta
+    keyword whole limit brightmagenta
+    keyword whole max brightmagenta
+    keyword whole min brightmagenta
+    keyword whole of brightmagenta
+    keyword whole or brightmagenta
+    keyword whole days brightmagenta
+    keyword whole target brightmagenta
+    keyword whole source brightmagenta
+    keyword whole local brightmagenta
+    keyword whole type brightmagenta
+    keyword whole pos brightmagenta
+    keyword whole country brightmagenta
+    keyword whole auto brightmagenta
 
 # Trades
 
-    keyword whole instrument white
-    keyword whole id white
-    keyword whole parties white
-    keyword whole trade white
-    keyword whole amend white
-    keyword whole confirm white
-    keyword whole allocate white
-    keyword whole notional white
-    keyword whole roll white
-    keyword whole fraction white
-    keyword whole pay white
-    keyword whole stream white
-    keyword whole adjust white
-    keyword whole calendar white
-    keyword whole recalculate white
-    keyword whole init white
+    keyword whole instrument brightmagenta
+    keyword whole id brightmagenta
+    keyword whole parties brightmagenta
+    keyword whole trade brightmagenta
+    keyword whole amend brightmagenta
+    keyword whole confirm brightmagenta
+    keyword whole allocate brightmagenta
+    keyword whole notional brightmagenta
+    keyword whole roll brightmagenta
+    keyword whole fraction brightmagenta
+    keyword whole pay brightmagenta
+    keyword whole stream brightmagenta
+    keyword whole adjust brightmagenta
+    keyword whole calendar brightmagenta
+    keyword whole recalculate brightmagenta
+    keyword whole init brightmagenta
 
 
 # Simple
