@@ -1,23 +1,15 @@
--- this file contains templates for instrument's fields and actions definitions 
--- may be used to generate (in compile time) subparsers based on very simplified business-readable grammar
--- it will allow users to extent products or messages (like in fpml5 but much simpler) or create type-specific default values
--- grammars may be concatenated with each other when constructing new type, like traits: Expiring Option is Option is Expiring - parser will try to match lines from every grammar. In fpml5 xsi:type was used for this purpose and allowed only one extension to be added(we can add more).
--- every element and line is non-mandatory and repeatable by default
--- if substitution has default value {count: Count} it will be used if line/substitution not matched. when mixing grammars in new type - the left has higher priority (so actually is expressions must be linearized like traits in scala).
--- default values may refer to other values in formulas: {premium: Money = count * optionsCount * 3000 CHF}
--- you can make line mandatory by specifying "!" in the end of the line
--- any word after {* : Count} may be matched as plural: with {count: Count} underlyer/with {count: Count} underlyers
--- also, highlighting files could be generated using this template
+-- this is an alternative to xsd
+-- it can be used to generate parsers, see https://github.com/dk14/typed-template
 
 -- expected grammar for Option type
 instrument {name: String} is Option
 exercise at {exerciseDate: Date} {$automatic: String}
-  {optionsCount: Count} options with strike {strike: Money}!
+  {optionsCount: Count} options with strike {strike: Money}! -- "!" makes line or parameter mandatory
   with {count: Count = one} underlyer
-  pay premium {premium: Money} from {partyFrom: Party} to {partyTo: Party} at {premiumDate: Date}
+  pay premium {premium: Money!} from {partyFrom: Party} to {partyTo: Party} at {premiumDate: Date}
   
 -- expected grammar for Expiring type  
-instrument {name: String} is Expiring
+instrument {name: String} is Expiring with Option -- "with" concatenates it with "Option" definition
   expire at {e: Enum{OSP, Open, Close} = OSP}
   with count {count: Count = two} underlyer
   
