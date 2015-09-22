@@ -1,19 +1,22 @@
--- describes business processes
+-- Business processes description examples
 
--- "if" checks (by pattern matching) received message from external system
--- "spawn" is sending message generated from recieved and maybe previous message(s)
--- actor may need internal state to check previous status (cache may be used, because some trade details non mentioned in the message)
--- actors may be spawned by correlationId (tradeId) - each req/resp in separate transaction
--- notifications (see below) are usually implemented as database or client state update
--- messages with old buisiness versions are ignored after amend/termination/cancel
+-- Some keywords:
+-- "process <pattern>" - process definition applied to some message pattern
+-- "start with", "from <state1> to <state2> - <action>" controls state transitions
+-- "if <cond1> or/and <cond2>" takes a message and checks predicate (by pattern matching)
+-- "spawn" sends new message
+-- "all", "some" additional predicates for several messages "correlated by" some id with additional predicate ("when")
+-- "," - separator between actions
+-- "and" - separator inside "for"
+-- "with" (in pattern matching) - checks that field is present inside a message
+-- "with" (inside spawn) - ensures that field or group of fields are present. If field value isn't specified - copies from original message.
 
-
--- block trade - trade wich may be allocated
+-- Example1. block trade - trade which may be allocated
 
 process block
 
 start with unconfirmed
-from unconfirmed to confirmation if request confirmation - spawn request confirmation --broadcast to participants
+from unconfirmed to confirmation if request confirmation - spawn request confirmation
 from * to * and risk calculated - spawn risk notification
 from confirmation to confirmed if confirmation agreed - spawn confirmation notification
 from confirmed or confirmation to allocating if allocation requested - allocate, 
@@ -24,12 +27,7 @@ from * to * if amend with clearing details or amend with non-cleared - spawn cle
 from * to unconfirmed if amend - spawn amend notification, spawn request confirmation
 
 
--- describes group behaviour of allocations in distributed transaction (second phase of commit will terminate block if succeed)
--- implementation may use both: 
---   correlationId - individual alloc id for request/response
---   parentCorrelationId  - id received from parent to check state of the group
--- "all" and "some" are predicates which use accumulated actor state; such actor is spawned by parentCorrelationId (blockTradeId)
--- "when" condition is used by all predicate
+-- Example2. Allocations (several messages)
 
 process allocations
 corellated by blockTradeId when sum(notional) == parent notional
@@ -41,8 +39,7 @@ from confirmation to expired if not all confirmations agreed during timeout - sp
 from confirmation to cancelled if some confirmations disputed - spawn cancel notification, cancel block
 from allocations confirmed to confirmed - spawn confirmation notification
 
--- describes clearing confirmation
--- this process may be applied for both block and allocations in any state
+-- Example 3. Clearing confirmation (complimentary to allocation)
 
 process *
 start with *
@@ -51,11 +48,3 @@ from clearing to expired if not clearing confirmed during timeout - spawn cleari
 from clearing to cleared if clearing confirmed - spawn clearing notification with status confirmed, spawn amend with clearing details
 from clearing to non cleared if clearing disputed - spawn clearing notification with status disputed, spawn amend with non-cleared status
 from clearing to * if terminate or cancel or amend
-
--- auto-matching
-
-process trader and sales version matching
-correlated by (notional == notional with tolerance 10 && parties == parties reverse) when count == 2
-
-start with unconfirmed
-from unconfirmed to confirmed if all request confirmations and risk accepted - spawn confirmation agreed
